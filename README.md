@@ -1,6 +1,9 @@
 # Reap-What-You-Sow
-Reap What You Sow is a Team Project for my Game Design Capstone class
+Reap What You Sow is a 2.5D Horror/Farming Simulator being developed in Professor Hartman's CSC 491. It is inspired by games like Harvest Moon, Animal Crossing, and Stardew Valley.  
 
-In the project I will do a chunk of the programming, as well as some story writing.
-
-Reap What You Sow is a top down 2D Horror/Farming Sim inspired by games like Harvest Moon, Animal Crossing, and Stardew Valley.  
+Developement team:
+Nicholas Cordial (Team Lead)
+Sean Blankenship (Social Media Manager)
+John Kelley (Github Manager)
+Hailey Guerkink
+Brendan Biggs
