@@ -11,6 +11,6 @@ public class BillboardSprite : MonoBehaviour
 
     private void LateUpdate()
     {
-        transform.LookAt(transform.position + mainCamera.transform.forward);
+        transform.rotation = mainCamera.transform.rotation;
     }
 }
