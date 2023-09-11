@@ -5,22 +5,31 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    //movement variables
     private Vector3 input;
     private Vector3 rotate;
     [SerializeField] private Rigidbody rigidbody;
     [SerializeField] private float speed = 3f;
    
+    // Interaction Variables
+    [SerializeField] private float interactionRange = 2f; // The range within which the player can interact with objects
+    [SerializeField] private LayerMask interactionLayer;  // LayerMask to filter out objects that aren't interactable
 
   
-    // Update is called once per frame
-    void FixedUpdate()
+    // Update is called every frame
+    void Update()
     {
         if(Input.anyKey)
         {
             GetMovement();
         }
-       
+
+        if (Input.GetKeyUp("e"))
+        {
+            Interact();
+        }
     }
+
     void Start()
     {
         //any movement input will allow the character to be followed by the camera
@@ -34,6 +43,7 @@ public class PlayerController : MonoBehaviour
 
 
     }
+
     void GetMovement()
     {
         //direction is what acquires the input from the keyboard.  Unity defaults to WASD config for movement.  Add rebindable keys later.
@@ -52,5 +62,22 @@ public class PlayerController : MonoBehaviour
 
         transform.position += upwardMovement;
 
+    }
+
+    void Interact()
+    {
+        Collider[] hits = Physics.OverlapSphere(transform.position, interactionRange, interactionLayer);
+
+        foreach (var hit in hits)
+        {
+            if (hit.CompareTag("NPC"))
+            {
+                hit.GetComponent<NPCController>().Talk();
+            }
+            else if (hit.CompareTag("Door"))
+            {
+                hit.GetComponent<DoorController>().Enter();
+            }
+        }
     }
 }

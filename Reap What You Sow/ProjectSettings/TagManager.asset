@@ -5,11 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - Planter
+  - NPC
+  - Door
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Interactable
   - Water
   - UI
   - 

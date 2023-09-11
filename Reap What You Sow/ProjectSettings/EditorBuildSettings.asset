@@ -6,9 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/FarmScene.unity
+    path: Assets/Scenes/Farm/FarmScene.unity
     guid: b0d1c44be14c7f74db04d9121bd19406
   - enabled: 1
-    path: Assets/Scenes/TownScene.unity
+    path: Assets/Scenes/Town/TownScene.unity
     guid: 918c1b8d72fd2f442a7364e2e93bdc4c
+  - enabled: 1
+    path: Assets/Scenes/Farm/FarmHouseScene.unity
+    guid: 2916fb6b4d177ff45abf039b8d2e2a40
+  - enabled: 1
+    path: Assets/Scenes/Town/ChurchScene.unity
+    guid: f2a92e1e1e60ac94fa58bef4f9d54df7
   m_configObjects: {}
