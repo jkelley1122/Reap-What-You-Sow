@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
             GetMovement();
         }
 
-        if (Input.GetKeyUp("e"))
+        if (Input.GetKeyDown("e"))
         {
             Interact();
         }
