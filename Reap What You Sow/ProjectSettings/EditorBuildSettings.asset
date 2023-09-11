@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Town/ChurchScene.unity
     guid: f2a92e1e1e60ac94fa58bef4f9d54df7
+  - enabled: 1
+    path: Assets/Scenes/Town/RiverScene.unity
+    guid: be8a2e01a1074794ca2d1a786d0fb852
   m_configObjects: {}
