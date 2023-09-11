@@ -11,6 +11,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody rigidbody;
     [SerializeField] private float speed = 3f;
    
+    // Animation variables
+    [SerializeField] private Animator animator;
+    private float lastDirection = 0;
+    
     // Interaction Variables
     [SerializeField] private float interactionRange = 2f; // The range within which the player can interact with objects
     [SerializeField] private LayerMask interactionLayer;  // LayerMask to filter out objects that aren't interactable
@@ -23,11 +27,16 @@ public class PlayerController : MonoBehaviour
         {
             GetMovement();
         }
-
+        else
+        {
+            animator.SetBool("Moving", false);
+        }
+        
         if (Input.GetKeyDown("e"))
         {
             Interact();
         }
+
     }
 
     void Start()
@@ -41,7 +50,16 @@ public class PlayerController : MonoBehaviour
 
         rotate = Quaternion.Euler(new Vector3(0, 90, 0)) * input;
 
-
+        // Intialize animation variables
+        Transform childTransform = transform.Find("PlayerSprite");
+        if (childTransform != null)
+        {
+            animator = childTransform.GetComponent<Animator>();
+        }
+        else
+        {
+            Debug.LogError("Child with Animator not found!");
+        }
     }
 
     void GetMovement()
@@ -62,8 +80,33 @@ public class PlayerController : MonoBehaviour
 
         transform.position += upwardMovement;
 
+        // Process player animation
+        AnimatePlayer(direction, righttMovement, upwardMovement);
+
     }
 
+    void AnimatePlayer(Vector3 direction, Vector3 rightMovement, Vector3 upwardMovement)
+    {
+        animator.SetBool("Moving", true);
+
+        if (direction.z > 0 && direction.x == 0)
+                animator.SetInteger("Direction", 3);    // Forward
+        else if (direction.z < 0 && direction.x == 0)
+            animator.SetInteger("Direction", 0);        // Backward
+        else if (direction.x > 0 && direction.z == 0)
+            animator.SetInteger("Direction", 2);        // Right
+        else if (direction.x < 0 && direction.z == 0)
+            animator.SetInteger("Direction", 1);        // Left
+        else if (direction.x > 0 && direction.z > 0)
+            animator.SetInteger("Direction", 7);        // Up Right
+        else if (direction.x < 0 && direction.z < 0)
+            animator.SetInteger("Direction", 4);        // Down Left
+        else if (direction.x > 0 && direction.z < 0)
+            animator.SetInteger("Direction", 5);        // Down Right
+        else if (direction.x < 0 && direction.z > 0)
+            animator.SetInteger("Direction", 6);        // Up Left
+        
+    }
     void Interact()
     {
         Collider[] hits = Physics.OverlapSphere(transform.position, interactionRange, interactionLayer);
