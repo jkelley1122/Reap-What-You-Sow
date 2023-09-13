@@ -2,9 +2,14 @@ using UnityEngine;
 
 public class NPCController : MonoBehaviour
 {
+
+    [SerializeField] private GameObject dialoguePanel;
+
     public void Talk()
     {
-        Debug.Log("Talking to NPC!");
+        dialoguePanel.SetActive(true);
+
+        //Debug.Log("Talking to NPC!");
     }
 
 }
