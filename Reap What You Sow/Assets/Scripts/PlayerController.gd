@@ -41,11 +41,38 @@ func get_movement(delta):
 	#tracks the direction the player is currently going toward
 	velocity = (right_movement + upward_movement).normalized() * speed
 
+
+	# Animation variable
+	var animation_player = $Sprite3D/PlayerAnimation
+	
 	# If the player is moving, rotate the player to face the movement direction.
 	# Similar to Unity's 'Transform.LookAt'.
 	if velocity.length() > 0:
 		var target_position = global_transform.origin + velocity.normalized()
 		look_at(target_position, Vector3(0, 1, 0))
+		
+		# Animation calculation
+		if v < 0:
+			if h < 0:
+				animation_player.play("walk_FR")
+			elif h > 0:
+				animation_player.play("walk_FL")
+			else:
+				animation_player.play("walk_forward")
+		elif v > 0:
+			if h < 0:
+				animation_player.play("walk_BR")
+			elif h > 0:
+				animation_player.play("walk_BL")
+			else:
+				animation_player.play("walk_backward")
+		else:
+			if h < 0:
+				animation_player.play("walk_right")
+			elif h > 0:
+				animation_player.play("walk_left")
+	else:
+		animation_player.play("idle_forward")
 
 func interact():
 	var interaction_shape = SphereShape3D.new()

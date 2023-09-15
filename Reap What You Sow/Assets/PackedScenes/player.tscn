@@ -1,9 +1,277 @@
-[gd_scene load_steps=6 format=3 uid="uid://c6uid3rpo8l3f"]
+[gd_scene load_steps=23 format=3 uid="uid://c6uid3rpo8l3f"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/PlayerController.gd" id="1_nwoci"]
-[ext_resource type="Texture2D" uid="uid://dw75hr637huqi" path="res://Assets/Sprites/SamplePlayer.png" id="2_ufp26"]
+[ext_resource type="Texture2D" uid="uid://g6o2joig1o5d" path="res://Assets/Sprites/SamplePlayerSheet.png" id="2_lvgoh"]
 [ext_resource type="Script" path="res://Assets/Scripts/FarmPlotController.gd" id="3_4fv6o"]
 [ext_resource type="Script" path="res://Assets/Scripts/PlantingController.gd" id="4_gr0sh"]
+
+[sub_resource type="Animation" id="Animation_wed87"]
+resource_name = "walk_right"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [15, 16, 17, 18, 19, 20]
+}
+
+[sub_resource type="Animation" id="Animation_4a4wm"]
+resource_name = "walk_left"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11, 12, 13]
+}
+
+[sub_resource type="Animation" id="Animation_cc24p"]
+resource_name = "walk_forward"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="Animation" id="Animation_dpyj7"]
+resource_name = "walk_backward"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [22, 23, 24, 25, 26, 27]
+}
+
+[sub_resource type="Animation" id="Animation_20e32"]
+resource_name = "walk_BR"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [50, 51, 52, 53, 54, 55]
+}
+
+[sub_resource type="Animation" id="Animation_0op7f"]
+resource_name = "walk_FL"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [29, 30, 31, 32, 33, 34]
+}
+
+[sub_resource type="Animation" id="Animation_co0uq"]
+resource_name = "walk_FR"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [36, 37, 38, 39, 40, 41]
+}
+
+[sub_resource type="Animation" id="Animation_508n2"]
+resource_name = "idle_forward"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_6efw1"]
+resource_name = "idle_left"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+
+[sub_resource type="Animation" id="Animation_obqwy"]
+resource_name = "idle_right"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [14]
+}
+
+[sub_resource type="Animation" id="Animation_ojybk"]
+resource_name = "idle_back"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [21]
+}
+
+[sub_resource type="Animation" id="Animation_upixo"]
+resource_name = "idle_FL"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [28]
+}
+
+[sub_resource type="Animation" id="Animation_1hske"]
+resource_name = "idle_FR"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [35]
+}
+
+[sub_resource type="Animation" id="Animation_5heao"]
+resource_name = "idle_BL"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [42]
+}
+
+[sub_resource type="Animation" id="Animation_q35cm"]
+resource_name = "idle_BR"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [49]
+}
+
+[sub_resource type="Animation" id="Animation_l66x1"]
+resource_name = "walk_BL"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [43, 44, 45, 46, 47, 48]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p6ncg"]
+_data = {
+"idle_BL": SubResource("Animation_5heao"),
+"idle_BR": SubResource("Animation_q35cm"),
+"idle_FL": SubResource("Animation_upixo"),
+"idle_FR": SubResource("Animation_1hske"),
+"idle_back": SubResource("Animation_ojybk"),
+"idle_forward": SubResource("Animation_508n2"),
+"idle_left": SubResource("Animation_6efw1"),
+"idle_right": SubResource("Animation_obqwy"),
+"walk_BL": SubResource("Animation_l66x1"),
+"walk_BR": SubResource("Animation_20e32"),
+"walk_FL": SubResource("Animation_0op7f"),
+"walk_FR": SubResource("Animation_co0uq"),
+"walk_backward": SubResource("Animation_dpyj7"),
+"walk_forward": SubResource("Animation_cc24p"),
+"walk_left": SubResource("Animation_4a4wm"),
+"walk_right": SubResource("Animation_wed87")
+}
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xgxeh"]
 size = Vector3(0.303681, 0.470473, 0.295718)
@@ -15,7 +283,17 @@ script = ExtResource("1_nwoci")
 [node name="Sprite3D" type="Sprite3D" parent="."]
 billboard = 1
 texture_filter = 0
-texture = ExtResource("2_ufp26")
+texture = ExtResource("2_lvgoh")
+hframes = 7
+vframes = 8
+frame = 36
+
+[node name="PlayerAnimation" type="AnimationPlayer" parent="Sprite3D"]
+root_node = NodePath("../..")
+speed_scale = 0.7
+libraries = {
+"": SubResource("AnimationLibrary_p6ncg")
+}
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_xgxeh")
