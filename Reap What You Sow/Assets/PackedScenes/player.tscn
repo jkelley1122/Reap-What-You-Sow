@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://c6uid3rpo8l3f"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/PlayerController.gd" id="1_nwoci"]
+[ext_resource type="Texture2D" uid="uid://dw75hr637huqi" path="res://Assets/Sprites/SamplePlayer.png" id="2_ufp26"]
+[ext_resource type="Script" path="res://Assets/Scripts/FarmPlotController.gd" id="3_4fv6o"]
+[ext_resource type="Script" path="res://Assets/Scripts/PlantingController.gd" id="4_gr0sh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xgxeh"]
+size = Vector3(0.303681, 0.470473, 0.295718)
+
+[node name="Player" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.234428, 0)
+script = ExtResource("1_nwoci")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+billboard = 1
+texture_filter = 0
+texture = ExtResource("2_ufp26")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_xgxeh")
+
+[node name="FarmPlot" type="Node3D" parent="."]
+script = ExtResource("3_4fv6o")
+
+[node name="Area3D" type="Area3D" parent="."]
+script = ExtResource("4_gr0sh")
