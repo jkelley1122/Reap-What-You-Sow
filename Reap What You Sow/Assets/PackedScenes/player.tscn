@@ -1,9 +1,10 @@
-[gd_scene load_steps=24 format=3 uid="uid://gi5m7r10ckrb"]
+[gd_scene load_steps=25 format=3 uid="uid://gi5m7r10ckrb"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/Player/PlayerController.gd" id="1_gs0do"]
 [ext_resource type="Texture2D" uid="uid://g6o2joig1o5d" path="res://Assets/Sprites/SamplePlayerSheet.png" id="2_lvgoh"]
 [ext_resource type="Script" path="res://Assets/Scripts/Farming/FarmPlotController.gd" id="3_ol46i"]
 [ext_resource type="PackedScene" uid="uid://dbbtcdgdjf42y" path="res://Assets/PackedScenes/PlantNode.tscn" id="4_ic4ba"]
+[ext_resource type="PackedScene" uid="uid://bd7l4i2vouuvo" path="res://Assets/Scenes/PauseScene.tscn" id="5_17xuy"]
 
 [sub_resource type="Animation" id="Animation_5heao"]
 resource_name = "idle_BL"
@@ -308,3 +309,6 @@ plant_node = ExtResource("4_ic4ba")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interact"]
 shape = SubResource("SphereShape3D_lgx15")
+
+[node name="PauseMenu" parent="." instance=ExtResource("5_17xuy")]
+anchors_preset = 15

@@ -1,15 +1,20 @@
 extends CharacterBody3D
 
+#@export creates variables that can be changed in the editor
+#@onready creates variables that when the game is starting up
 #movement variables
 @export var speed = 2.0
 var input_dir = Vector3()
 var rotate_dir = Vector3()
 
 # Animation Variables
+@onready var animation_player = $Sprite3D/PlayerAnimation
+@onready var area3D = $Interact
 var direction = 1
 
 # Interaction Variables
 @export var interaction_range : float = 2.0
+@onready var collision_shape = $Interact/CollisionShape3D
 
 
 # FixedUpdate (_process() is Update)
@@ -31,7 +36,6 @@ func _ready():
 	
 	
 	# Set Interact's collision shape's radius to what's in the editor
-	var collision_shape = $Interact/CollisionShape3D
 	if collision_shape and collision_shape.shape:
 		collision_shape.shape.radius = interaction_range
 	else:
@@ -59,7 +63,6 @@ func get_movement(delta):
 	get_animation(velocity.length(), v, h)
 
 func get_animation(moving, v, h):
-	var animation_player = $Sprite3D/PlayerAnimation
 	
 	if moving > 0:
 		if v < 0:
@@ -109,9 +112,8 @@ func get_animation(moving, v, h):
 				animation_player.play("idle_BR")
 			_:
 				animation_player.play("idle_forward")
-
+		
 func interact():
-	var area3D = $Interact
 		
 	for body in area3D.get_overlapping_bodies():
 		if body.is_in_group("npc"):
