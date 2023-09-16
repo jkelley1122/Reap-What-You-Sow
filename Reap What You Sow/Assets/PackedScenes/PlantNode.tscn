@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://dbbtcdgdjf42y"]
+
+[ext_resource type="Material" uid="uid://cisi56j5wirsj" path="res://Assets/Materials/MAT_DEV_YELLOW.tres" id="1_wxfo2"]
+[ext_resource type="Script" path="res://Assets/Scripts/Farming/PlantingController.gd" id="2_ubr1r"]
+[ext_resource type="Material" uid="uid://bj6guvvom1yl" path="res://Assets/Materials/MAT_DEV_PINK.tres" id="3_h5dmd"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_88kbp"]
+material = ExtResource("1_wxfo2")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sd20m"]
+size = Vector3(2.02444, 1.9781, 2.0024)
+
+[node name="PlantNode" type="MeshInstance3D"]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+mesh = SubResource("BoxMesh_88kbp")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+script = ExtResource("2_ubr1r")
+new_mat = ExtResource("3_h5dmd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_sd20m")
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]

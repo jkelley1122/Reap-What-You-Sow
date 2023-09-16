@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cisi56j5wirsj"]
+
+[resource]
+resource_name = "MAT_DEV_YELLOW"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.906332, 0.769499, 0, 1)
+roughness = 0.5
+emission_enabled = true
+emission = Color(1, 0.800213, 0, 1)

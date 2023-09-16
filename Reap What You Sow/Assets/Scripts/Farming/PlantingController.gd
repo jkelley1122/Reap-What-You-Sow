@@ -7,6 +7,6 @@ func _ready():
 	pass
 	
 # OnTriggerEnter
+# Look into signals in Godot if you want to better understand how this works.
 func _on_body_entered(body: PhysicsBody3D): 
-	if body.has_method("get_surface_material"): # Check if the body has a material we can change
-		body.set_surface_material(0, new_mat)
+	get_parent().material_override = new_mat
