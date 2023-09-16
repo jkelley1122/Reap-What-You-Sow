@@ -1,13 +1,16 @@
 extends CharacterBody3D
 
 #movement variables
-@export var speed = 3.0
+@export var speed = 2.0
 var input_dir = Vector3()
 var rotate_dir = Vector3()
 
+# Animation Variables
+var direction = 1
+
 # Interaction Variables
 @export var interaction_range : float = 2.0
-var interaction_layer : int = 1
+
 
 # FixedUpdate (_process() is Update)
 func _physics_process(delta):
@@ -25,6 +28,14 @@ func _ready():
 	input_dir.y = 0 #locks the y-axis so there's no floating or other funny business with gravity.  Keeps player grounded. 
 	input_dir = input_dir.normalized()
 	rotate_dir = input_dir.rotated(Vector3(0, 1, 0), deg_to_rad(90))
+	
+	
+	# Set Interact's collision shape's radius to what's in the editor
+	var collision_shape = $Interact/CollisionShape3D
+	if collision_shape and collision_shape.shape:
+		collision_shape.shape.radius = interaction_range
+	else:
+		print("The player does not have an interaction collider!")
 
 func get_movement(delta):
 	#h and v (previously direction) is what acquires the input from the keyboard. Godot default uses rebindable keys
@@ -38,10 +49,6 @@ func get_movement(delta):
 	
 	#tracks the direction the player is currently going toward
 	velocity = (right_movement + upward_movement).normalized() * speed
-
-
-	# Animation variable
-	var animation_player = $Sprite3D/PlayerAnimation
 	
 	# If the player is moving, rotate the player to face the movement direction.
 	# Similar to Unity's 'Transform.LookAt'.
@@ -49,40 +56,67 @@ func get_movement(delta):
 		var target_position = global_transform.origin + velocity.normalized()
 		look_at(target_position, Vector3(0, 1, 0))
 		
-		# Animation calculation
+	get_animation(velocity.length(), v, h)
+
+func get_animation(moving, v, h):
+	var animation_player = $Sprite3D/PlayerAnimation
+	
+	if moving > 0:
 		if v < 0:
 			if h < 0:
 				animation_player.play("walk_FR")
+				direction = 6
 			elif h > 0:
 				animation_player.play("walk_FL")
+				direction = 5
 			else:
 				animation_player.play("walk_forward")
+				direction = 1
 		elif v > 0:
 			if h < 0:
 				animation_player.play("walk_BR")
+				direction = 8
 			elif h > 0:
 				animation_player.play("walk_BL")
+				direction = 7
 			else:
-				animation_player.play("walk_backward")
+				animation_player.play("walk_back")
+				direction = 4
 		else:
 			if h < 0:
 				animation_player.play("walk_right")
+				direction = 3
 			elif h > 0:
 				animation_player.play("walk_left")
+				direction = 2
 	else:
-		animation_player.play("idle_forward")
+		match direction:
+			1:
+				animation_player.play("idle_forward")
+			2:
+				animation_player.play("idle_left")
+			3:
+				animation_player.play("idle_right")
+			4:
+				animation_player.play("idle_back")
+			5:
+				animation_player.play("idle_FL")
+			6:
+				animation_player.play("idle_FR")
+			7:
+				animation_player.play("idle_BL")
+			8:
+				animation_player.play("idle_BR")
+			_:
+				animation_player.play("idle_forward")
 
 func interact():
-	var interaction_shape = SphereShape3D.new()
-	var shape_query = PhysicsShapeQueryParameters3D.new()
-	shape_query.shape_rid = interaction_shape.get_rid()
-	shape_query.transform = self.global_transform
-	shape_query.collision_mask = interaction_layer
-
-	var hits = get_world_3d().direct_space_state.intersect_shape(shape_query)
-	
-	for hit in hits:
-		if hit.collider.is_in_group("NPC"):
-			hit.collider.Talk()
-		elif hit.collider.is_in_group("Door"):
-			hit.collider.Enter()
+	var area3D = $Interact
+		
+	for body in area3D.get_overlapping_bodies():
+		if body.is_in_group("npc"):
+			body.talk()
+			break
+		elif body.is_in_group("door"):
+			body.open()
+			break

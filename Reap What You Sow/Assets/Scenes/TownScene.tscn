@@ -1,14 +1,20 @@
-[gd_scene load_steps=10 format=3 uid="uid://cyr50f2l25kg5"]
+[gd_scene load_steps=14 format=3 uid="uid://cyr50f2l25kg5"]
 
 [ext_resource type="PackedScene" uid="uid://gi5m7r10ckrb" path="res://Assets/PackedScenes/player.tscn" id="2_4vtn3"]
 [ext_resource type="Script" path="res://Assets/Scripts/Utility/CameraController.gd" id="2_a7x6r"]
 [ext_resource type="PackedScene" uid="uid://mhqv0dhfoovh" path="res://Assets/Models/TestHouse.glb" id="3_cbunc"]
 [ext_resource type="PackedScene" uid="uid://bv8hdjqag4sng" path="res://Assets/Models/TestTown.glb" id="4_uqjw7"]
+[ext_resource type="Script" path="res://Assets/Scripts/Interactables/DoorController.gd" id="4_yet2c"]
 [ext_resource type="Script" path="res://Assets/Scripts/Utility/AreaChange.gd" id="5_b43ou"]
 [ext_resource type="PackedScene" uid="uid://en8siof2j1ei" path="res://Assets/Models/TestSign.glb" id="5_rfkyj"]
+[ext_resource type="PackedScene" uid="uid://ipqlxbyvi27p" path="res://Assets/PackedScenes/npc.tscn" id="7_nfw08"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ql3li"]
 size = Vector3(1.82616, 1.68358, 1.8341)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0bb8y"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7kg4h"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mke1h"]
 size = Vector3(0.356405, 0.367621, 0.112553)
@@ -20,7 +26,7 @@ size = Vector3(0.375876, 1, 0.930322)
 
 [node name="Player" parent="." instance=ExtResource("2_4vtn3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.15999, 0.235552, 0.0029067)
-speed = 2.0
+interaction_range = 0.5
 
 [node name="Environment" type="Node3D" parent="."]
 
@@ -35,6 +41,18 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/TestHouse/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.281681, 0)
 shape = SubResource("BoxShape3D_ql3li")
+
+[node name="Door" type="MeshInstance3D" parent="Environment/TestHouse"]
+transform = Transform3D(0.408083, 0, 0, 0, 0.532366, 0, 0, 0, 0.0751534, -0.0398629, -0.288548, 0.910388)
+mesh = SubResource("BoxMesh_0bb8y")
+skeleton = NodePath("../../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/TestHouse/Door" groups=["door"]]
+script = ExtResource("4_yet2c")
+scene_to_load = "ChurchScene"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/TestHouse/Door/StaticBody3D"]
+shape = SubResource("BoxShape3D_7kg4h")
 
 [node name="TestHouse2" parent="Environment" instance=ExtResource("3_cbunc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.87915, 0.553104, -1.90225)
@@ -115,6 +133,9 @@ transform = Transform3D(-0.5, -0.612372, 0.612373, 0, 0.707107, 0.707106, -0.866
 light_color = Color(0.976471, 0.996078, 1, 1)
 light_energy = 1.561
 shadow_enabled = true
+
+[node name="NPC" parent="." instance=ExtResource("7_nfw08")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2979, 0.222784, -1.01202)
 
 [connection signal="body_entered" from="Triggers/ToFarm" to="Triggers/ToFarm" method="_on_body_entered"]
 [connection signal="body_entered" from="Triggers/ToRiver" to="Triggers/ToRiver" method="_on_body_entered"]
