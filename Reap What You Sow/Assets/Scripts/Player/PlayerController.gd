@@ -9,8 +9,6 @@ var rotate_dir = Vector3()
 @export var interaction_range : float = 2.0
 var interaction_layer : int = 1
 
-
-
 # FixedUpdate (_process() is Update)
 func _physics_process(delta):
 	get_movement(delta)

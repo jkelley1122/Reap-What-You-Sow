@@ -1,58 +1,120 @@
-[gd_scene load_steps=6 format=3 uid="uid://cyr50f2l25kg5"]
+[gd_scene load_steps=10 format=3 uid="uid://cyr50f2l25kg5"]
 
-[ext_resource type="PackedScene" uid="uid://c6uid3rpo8l3f" path="res://Assets/PackedScenes/player.tscn" id="2_4vtn3"]
-[ext_resource type="Script" path="res://Assets/Scripts/CameraController.gd" id="4_ddc1g"]
-[ext_resource type="PackedScene" uid="uid://mhqv0dhfoovh" path="res://Assets/Models/TestHouse.glb" id="4_od654"]
+[ext_resource type="PackedScene" uid="uid://gi5m7r10ckrb" path="res://Assets/PackedScenes/player.tscn" id="2_4vtn3"]
+[ext_resource type="Script" path="res://Assets/Scripts/Utility/CameraController.gd" id="2_a7x6r"]
+[ext_resource type="PackedScene" uid="uid://mhqv0dhfoovh" path="res://Assets/Models/TestHouse.glb" id="3_cbunc"]
 [ext_resource type="PackedScene" uid="uid://bv8hdjqag4sng" path="res://Assets/Models/TestTown.glb" id="4_uqjw7"]
+[ext_resource type="Script" path="res://Assets/Scripts/Utility/AreaChange.gd" id="5_b43ou"]
+[ext_resource type="PackedScene" uid="uid://en8siof2j1ei" path="res://Assets/Models/TestSign.glb" id="5_rfkyj"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_eq72b"]
-size = Vector3(1.84892, 1.61497, 1.82501)
+[sub_resource type="BoxShape3D" id="BoxShape3D_ql3li"]
+size = Vector3(1.82616, 1.68358, 1.8341)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mke1h"]
+size = Vector3(0.356405, 0.367621, 0.112553)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4wl0f"]
+size = Vector3(0.375876, 1, 0.930322)
 
 [node name="TownScene" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("2_4vtn3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00655127, 0.235552, 0.0029067)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.15999, 0.235552, 0.0029067)
 speed = 2.0
 
-[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("player")]
-transform = Transform3D(0.707107, -0.353553, 0.612372, 0, 0.866025, 0.5, -0.707107, -0.353553, 0.612372, 5.333, 4.715, 5.424)
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="TestTown" parent="Environment" instance=ExtResource("4_uqjw7")]
+
+[node name="TestHouse" parent="Environment" instance=ExtResource("3_cbunc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.84606, 0.553104, -1.90225)
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/TestHouse"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/TestHouse/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.281681, 0)
+shape = SubResource("BoxShape3D_ql3li")
+
+[node name="TestHouse2" parent="Environment" instance=ExtResource("3_cbunc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.87915, 0.553104, -1.90225)
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/TestHouse2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/TestHouse2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.281681, 0)
+shape = SubResource("BoxShape3D_ql3li")
+
+[node name="TestHouse3" parent="Environment" instance=ExtResource("3_cbunc")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.71511, 0.553104, 1.92293)
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/TestHouse3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/TestHouse3/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.281681, 0)
+shape = SubResource("BoxShape3D_ql3li")
+
+[node name="TestSign" parent="Environment" instance=ExtResource("5_rfkyj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.93596, -1.19209e-07, -0.544351)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/TestSign"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/TestSign/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00958109, 0.181051, 0)
+shape = SubResource("BoxShape3D_mke1h")
+
+[node name="TestSign2" parent="Environment" instance=ExtResource("5_rfkyj")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.640486, -1.19209e-07, 4.89791)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/TestSign2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/TestSign2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00958109, 0.181051, 0)
+shape = SubResource("BoxShape3D_mke1h")
+
+[node name="TestSign3" parent="Environment" instance=ExtResource("5_rfkyj")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.640486, -1.19209e-07, -4.89404)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/TestSign3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/TestSign3/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00958109, 0.181051, 0)
+shape = SubResource("BoxShape3D_mke1h")
+
+[node name="Triggers" type="Node3D" parent="."]
+
+[node name="ToFarm" type="Area3D" parent="Triggers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.00033, 0.496735, 0)
+script = ExtResource("5_b43ou")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Triggers/ToFarm"]
+shape = SubResource("BoxShape3D_4wl0f")
+
+[node name="ToRiver" type="Area3D" parent="Triggers"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.00550042, 0.496735, 4.9906)
+script = ExtResource("5_b43ou")
+scene_to_load = "RiverScene"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Triggers/ToRiver"]
+shape = SubResource("BoxShape3D_4wl0f")
+
+[node name="Utility" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Utility" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.707107, -0.353553, 0.612373, 0, 0.866026, 0.5, -0.707107, -0.353553, 0.612373, 5.333, 4.715, 5.424)
 projection = 1
 size = 3.0
-script = ExtResource("4_ddc1g")
-player = NodePath("../Player")
+script = ExtResource("2_a7x6r")
+player = NodePath("../../Player")
 offset = Vector3(5.333, 4.715, 5.424)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.5, -0.612372, 0.612372, 0, 0.707107, 0.707107, -0.866025, 0.353553, -0.353553, 0, 5.33816, 0)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Utility"]
+transform = Transform3D(-0.5, -0.612372, 0.612373, 0, 0.707107, 0.707106, -0.866025, 0.353553, -0.353554, 0, 5.33816, 0)
 light_color = Color(0.976471, 0.996078, 1, 1)
 light_energy = 1.561
 shadow_enabled = true
 
-[node name="TestTown" parent="." instance=ExtResource("4_uqjw7")]
-
-[node name="TestHouse" parent="." instance=ExtResource("4_od654")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.75115, 0.544533, 1.91312)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="TestHouse"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TestHouse/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.249588, 0)
-shape = SubResource("BoxShape3D_eq72b")
-
-[node name="TestHouse2" parent="." instance=ExtResource("4_od654")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.89527, 0.544533, -1.74288)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="TestHouse2"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TestHouse2/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.249588, 0)
-shape = SubResource("BoxShape3D_eq72b")
-
-[node name="TestHouse3" parent="." instance=ExtResource("4_od654")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.88369, 0.544533, -1.74288)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="TestHouse3"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TestHouse3/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.249588, 0)
-shape = SubResource("BoxShape3D_eq72b")
+[connection signal="body_entered" from="Triggers/ToFarm" to="Triggers/ToFarm" method="_on_body_entered"]
+[connection signal="body_entered" from="Triggers/ToRiver" to="Triggers/ToRiver" method="_on_body_entered"]

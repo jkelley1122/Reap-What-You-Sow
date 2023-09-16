@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=3 uid="uid://deg3v4mbyotiu"]
+
+[ext_resource type="PackedScene" uid="uid://gi5m7r10ckrb" path="res://Assets/PackedScenes/player.tscn" id="1_fggio"]
+[ext_resource type="PackedScene" uid="uid://cbis485v8pvsd" path="res://Assets/Models/TestRiver.glb" id="3_qrl4g"]
+[ext_resource type="PackedScene" uid="uid://en8siof2j1ei" path="res://Assets/Models/TestSign.glb" id="4_cau6t"]
+[ext_resource type="Script" path="res://Assets/Scripts/Utility/AreaChange.gd" id="5_7tqre"]
+[ext_resource type="Script" path="res://Assets/Scripts/Utility/CameraController.gd" id="6_jbptj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mke1h"]
+size = Vector3(0.356405, 0.367621, 0.112553)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4wl0f"]
+size = Vector3(0.375876, 1, 0.930322)
+
+[node name="TownScene" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_fggio")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0377517, 0.235552, -4.216)
+speed = 2.0
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="TestSign3" parent="Environment" instance=ExtResource("4_cau6t")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.640486, -1.19209e-07, -4.89404)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/TestSign3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/TestSign3/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00958109, 0.181051, 0)
+shape = SubResource("BoxShape3D_mke1h")
+
+[node name="TestRiver" parent="Environment" instance=ExtResource("3_qrl4g")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Triggers" type="Node3D" parent="."]
+
+[node name="ToTown" type="Area3D" parent="Triggers"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.00550042, 0.496735, -5.01041)
+script = ExtResource("5_7tqre")
+scene_to_load = "TownScene"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Triggers/ToTown"]
+shape = SubResource("BoxShape3D_4wl0f")
+
+[node name="Utility" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Utility" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.707107, -0.353553, 0.612373, 0, 0.866026, 0.5, -0.707107, -0.353553, 0.612373, 5.333, 4.715, 5.424)
+projection = 1
+size = 3.0
+script = ExtResource("6_jbptj")
+player = NodePath("../../Player")
+offset = Vector3(5.333, 4.715, 5.424)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Utility"]
+transform = Transform3D(-0.5, -0.612372, 0.612373, 0, 0.707107, 0.707106, -0.866025, 0.353553, -0.353554, 0, 5.33816, 0)
+light_color = Color(0.976471, 0.996078, 1, 1)
+light_energy = 1.561
+shadow_enabled = true
+
+[connection signal="body_entered" from="Triggers/ToTown" to="Triggers/ToTown" method="_on_body_entered"]
