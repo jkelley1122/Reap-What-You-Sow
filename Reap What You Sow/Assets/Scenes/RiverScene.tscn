@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://deg3v4mbyotiu"]
+[gd_scene load_steps=9 format=3 uid="uid://deg3v4mbyotiu"]
 
 [ext_resource type="PackedScene" uid="uid://gi5m7r10ckrb" path="res://Assets/PackedScenes/player.tscn" id="1_fggio"]
 [ext_resource type="PackedScene" uid="uid://cbis485v8pvsd" path="res://Assets/Models/TestRiver.glb" id="3_qrl4g"]
 [ext_resource type="PackedScene" uid="uid://en8siof2j1ei" path="res://Assets/Models/TestSign.glb" id="4_cau6t"]
 [ext_resource type="Script" path="res://Assets/Scripts/Utility/AreaChange.gd" id="5_7tqre"]
+[ext_resource type="Script" path="res://Assets/Scripts/Interactables/fishing_minigame_controller.gd" id="5_pn741"]
 [ext_resource type="Script" path="res://Assets/Scripts/Utility/CameraController.gd" id="6_jbptj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mke1h"]
@@ -38,7 +39,16 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.005
 script = ExtResource("5_7tqre")
 scene_to_load = "TownScene"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Triggers/ToTown"]
+[node name="exit_to_town_collider" type="CollisionShape3D" parent="Triggers/ToTown"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0109091, 0, 0.00553322)
+shape = SubResource("BoxShape3D_4wl0f")
+
+[node name="FishingTrigger" type="Area3D" parent="Triggers" groups=["minigame"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1456, 0, -0.979324)
+script = ExtResource("5_pn741")
+
+[node name="fishing_collider" type="CollisionShape3D" parent="Triggers/FishingTrigger"]
+transform = Transform3D(-4.37114e-08, 0, 1, -0.999963, 0.008552, -4.37098e-08, -0.008552, -0.999963, -3.7382e-10, 0.0368102, 0.209813, 0.00636673)
 shape = SubResource("BoxShape3D_4wl0f")
 
 [node name="Utility" type="Node3D" parent="."]
@@ -58,3 +68,4 @@ light_energy = 1.561
 shadow_enabled = true
 
 [connection signal="body_entered" from="Triggers/ToTown" to="Triggers/ToTown" method="_on_body_entered"]
+[connection signal="input_event" from="Triggers/FishingTrigger" to="Triggers/FishingTrigger" method="_on_input_event"]

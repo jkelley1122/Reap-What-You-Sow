@@ -30,7 +30,6 @@ mesh = SubResource("BoxMesh_0bb8y")
 skeleton = NodePath("../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Environment/Door" groups=["door"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("4_8nwx3")
 scene_to_load = "TownScene"
 

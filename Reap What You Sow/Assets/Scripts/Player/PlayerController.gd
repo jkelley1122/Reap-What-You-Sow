@@ -122,3 +122,6 @@ func interact():
 		elif body.is_in_group("door"):
 			body.open()
 			break
+		elif body.is_in_group("minigame"):
+			body.is_fishing()
+			break
