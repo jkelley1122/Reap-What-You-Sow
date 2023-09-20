@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://bje6fpiku3atu"]
+
+[ext_resource type="PackedScene" uid="uid://gi5m7r10ckrb" path="res://Assets/PackedScenes/player.tscn" id="1_dx2gp"]
+[ext_resource type="PackedScene" uid="uid://3457a5so8lew" path="res://Assets/Models/TestChurch.glb" id="3_3itmb"]
+[ext_resource type="Script" path="res://Assets/Scripts/Interactables/DoorController.gd" id="4_8nwx3"]
+[ext_resource type="Script" path="res://Assets/Scripts/Utility/CameraController.gd" id="7_xxw5x"]
+[ext_resource type="PackedScene" uid="uid://ipqlxbyvi27p" path="res://Assets/PackedScenes/npc.tscn" id="8_fo30i"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_0bb8y"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7kg4h"]
+
+[node name="TownScene" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_dx2gp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00842285, 0.235552, 4.70605)
+interaction_range = 0.5
+
+[node name="NPC" parent="." instance=ExtResource("8_fo30i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03408, 0.222784, 0.956202)
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="TestChurch" parent="Environment" instance=ExtResource("3_3itmb")]
+skeleton = NodePath("../..")
+
+[node name="Door" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(0.408083, 0, 0, 0, 0.532366, 0, 0, 0, 0.0751534, 0.0143816, 0.264556, 5.19076)
+mesh = SubResource("BoxMesh_0bb8y")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Door" groups=["door"]]
+script = ExtResource("4_8nwx3")
+scene_to_load = "TownScene"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Door/StaticBody3D"]
+shape = SubResource("BoxShape3D_7kg4h")
+
+[node name="Utility" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Utility" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.707107, -0.353553, 0.612373, 0, 0.866026, 0.5, -0.707107, -0.353553, 0.612373, 5.333, 4.715, 5.424)
+projection = 1
+size = 3.0
+script = ExtResource("7_xxw5x")
+player = NodePath("../../Player")
+offset = Vector3(5.333, 4.715, 5.424)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Utility"]
+transform = Transform3D(-0.5, -0.612372, 0.612373, 0, 0.707107, 0.707106, -0.866025, 0.353553, -0.353554, 0, 5.33816, 0)
+light_color = Color(0.976471, 0.996078, 1, 1)
+light_energy = 1.561
+shadow_enabled = true

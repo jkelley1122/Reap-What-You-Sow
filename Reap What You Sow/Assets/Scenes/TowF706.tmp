@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://cyr50f2l25kg5"]
+
+[ext_resource type="PackedScene" uid="uid://c6uid3rpo8l3f" path="res://Assets/PackedScenes/player.tscn" id="2_4vtn3"]
+[ext_resource type="Script" path="res://Assets/Scripts/CameraController.gd" id="4_ddc1g"]
+[ext_resource type="PackedScene" uid="uid://mhqv0dhfoovh" path="res://Assets/Models/TestHouse.glb" id="4_od654"]
+[ext_resource type="PackedScene" uid="uid://bv8hdjqag4sng" path="res://Assets/Models/TestTown.glb" id="4_uqjw7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eq72b"]
+size = Vector3(1.84892, 1.61497, 1.82501)
+
+[node name="TownScene" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("2_4vtn3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00655127, 0.235552, 0.0029067)
+speed = 2.0
+interaction_range = 2.0
+
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("player")]
+transform = Transform3D(0.707107, -0.353553, 0.612372, 0, 0.866025, 0.5, -0.707107, -0.353553, 0.612372, 5.333, 4.715, 5.424)
+projection = 1
+size = 3.0
+script = ExtResource("4_ddc1g")
+player = NodePath("../Player")
+offset = Vector3(5.333, 4.715, 5.424)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.5, -0.612372, 0.612372, 0, 0.707107, 0.707107, -0.866025, 0.353553, -0.353553, 0, 5.33816, 0)
+light_color = Color(0.976471, 0.996078, 1, 1)
+light_energy = 1.561
+shadow_enabled = true
+
+[node name="TestTown" parent="." instance=ExtResource("4_uqjw7")]
+
+[node name="TestHouse" parent="." instance=ExtResource("4_od654")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.75115, 0.544533, 1.91312)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="TestHouse"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestHouse/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.249588, 0)
+shape = SubResource("BoxShape3D_eq72b")
+
+[node name="TestHouse2" parent="." instance=ExtResource("4_od654")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.89527, 0.544533, -1.74288)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="TestHouse2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestHouse2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.249588, 0)
+shape = SubResource("BoxShape3D_eq72b")
+
+[node name="TestHouse3" parent="." instance=ExtResource("4_od654")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.88369, 0.544533, -1.74288)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="TestHouse3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestHouse3/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.249588, 0)
+shape = SubResource("BoxShape3D_eq72b")
