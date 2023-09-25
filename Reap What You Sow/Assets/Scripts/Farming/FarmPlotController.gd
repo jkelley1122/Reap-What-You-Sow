@@ -26,7 +26,7 @@ func def_plot():
 
 	for point in plot_points:
 		for n in nodes:
-			if is_too_close(n.global_transform.origin, point):
+			if is_good_placement(n.global_transform.origin, point):
 				valid = false
 				break
 
@@ -34,7 +34,8 @@ func def_plot():
 		define_plot_space()
 
 # Checks the distance between two points to see if they are too close.
-func is_too_close(point1: Vector3, point2: Vector3) -> bool:
+#Also checks to make sure the plot is within the size constraints
+func is_good_placement(point1: Vector3, point2: Vector3) -> bool:
 	return point1.distance_to(point2) < 0.75
 
 func define_plot_space():
