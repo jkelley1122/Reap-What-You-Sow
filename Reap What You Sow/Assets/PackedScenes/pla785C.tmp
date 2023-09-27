@@ -1,8 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://ipqlxbyvi27p"]
+[gd_scene load_steps=25 format=3 uid="uid://gi5m7r10ckrb"]
 
-[ext_resource type="Script" path="res://Assets/Scripts/Interactables/NPCController.gd" id="1_y3bpn"]
-[ext_resource type="Texture2D" uid="uid://ckanw6t5e2of7" path="res://Assets/Sprites/spr_Rana_front.png" id="2_r15v2"]
-[ext_resource type="PackedScene" uid="uid://b360bwskduo1i" path="res://Assets/Scenes/DialogueScene.tscn" id="3_6oo36"]
+[ext_resource type="Script" path="res://Assets/Scripts/Player/PlayerController.gd" id="1_gs0do"]
+[ext_resource type="Texture2D" uid="uid://g6o2joig1o5d" path="res://Assets/Sprites/SamplePlayerSheet.png" id="2_lvgoh"]
+[ext_resource type="Script" path="res://Assets/Scripts/Farming/FarmPlotController.gd" id="3_ol46i"]
+[ext_resource type="PackedScene" uid="uid://dbbtcdgdjf42y" path="res://Assets/PackedScenes/PlantNode.tscn" id="4_ic4ba"]
+[ext_resource type="PackedScene" uid="uid://bd7l4i2vouuvo" path="res://Assets/Scenes/PauseScene.tscn" id="5_17xuy"]
 
 [sub_resource type="Animation" id="Animation_5heao"]
 resource_name = "idle_BL"
@@ -189,7 +191,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_dpyj7"]
-resource_name = "walk_backward"
+resource_name = "walk_back"
 length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -266,7 +268,7 @@ _data = {
 "walk_BR": SubResource("Animation_20e32"),
 "walk_FL": SubResource("Animation_0op7f"),
 "walk_FR": SubResource("Animation_co0uq"),
-"walk_backward": SubResource("Animation_dpyj7"),
+"walk_back": SubResource("Animation_dpyj7"),
 "walk_forward": SubResource("Animation_cc24p"),
 "walk_left": SubResource("Animation_4a4wm"),
 "walk_right": SubResource("Animation_wed87")
@@ -275,16 +277,21 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_xgxeh"]
 size = Vector3(0.303681, 0.470473, 0.295718)
 
-[node name="NPC" type="CharacterBody3D" groups=["npc"]]
+[sub_resource type="SphereShape3D" id="SphereShape3D_lgx15"]
+
+[node name="Player" type="CharacterBody3D" groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.234428, 0)
-script = ExtResource("1_y3bpn")
+script = ExtResource("1_gs0do")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 billboard = 1
 texture_filter = 0
-texture = ExtResource("2_r15v2")
+texture = ExtResource("2_lvgoh")
+hframes = 7
+vframes = 8
+frame = 22
 
-[node name="NPCAnimation" type="AnimationPlayer" parent="Sprite3D"]
+[node name="PlayerAnimation" type="AnimationPlayer" parent="Sprite3D"]
 root_node = NodePath("../..")
 speed_scale = 0.7
 libraries = {
@@ -294,4 +301,13 @@ libraries = {
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_xgxeh")
 
-[node name="DialogueMenu" parent="." instance=ExtResource("3_6oo36")]
+[node name="FarmPlot" type="Node3D" parent="."]
+script = ExtResource("3_ol46i")
+plant_node = ExtResource("4_ic4ba")
+
+[node name="Interact" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interact"]
+shape = SubResource("SphereShape3D_lgx15")
+
+[node name="PauseMenu" parent="." instance=ExtResource("5_17xuy")]

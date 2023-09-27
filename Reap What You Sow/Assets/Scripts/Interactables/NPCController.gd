@@ -1,6 +1,12 @@
 extends CharacterBody3D
 
+@export var npc_name = "Rana"
+@export var npc_reputation = 100
 
-# Called when the node enters the scene tree for the first time.
+@onready var dialogue_menu = $DialogueMenu
+@onready var animator: AnimationPlayer = $DialogueMenu/AnimationPlayer
+	
 func talk():
-	print("Talking to NPC!")
+	if (dialogue_menu.has_method("start_dialogue")):
+		dialogue_menu.start_dialogue("Rana", 95)
+

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bb7ywxi0s1ep7"]
+[gd_scene load_steps=11 format=3 uid="uid://bb7ywxi0s1ep7"]
 
 [ext_resource type="PackedScene" uid="uid://gi5m7r10ckrb" path="res://Assets/PackedScenes/player.tscn" id="1_xv6ju"]
 [ext_resource type="PackedScene" uid="uid://dbo656wlewfct" path="res://Assets/Models/TestPlayerFarm.glb" id="3_wl5jr"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Assets/Scripts/Utility/CameraController.gd" id="5_g2s2n"]
 [ext_resource type="Script" path="res://Assets/Scripts/Utility/AreaChange.gd" id="5_uh8jm"]
 [ext_resource type="PackedScene" uid="uid://mhqv0dhfoovh" path="res://Assets/Models/TestHouse.glb" id="6_j6wjd"]
+[ext_resource type="Script" path="res://Assets/Scripts/Utility/TimeController.gd" id="7_q3hex"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jl0yc"]
 size = Vector3(1.82616, 1.68358, 1.8341)
@@ -16,10 +17,10 @@ size = Vector3(0.356405, 0.367621, 0.112553)
 [sub_resource type="BoxShape3D" id="BoxShape3D_4wl0f"]
 size = Vector3(0.375876, 1, 0.930322)
 
-[node name="TownScene" type="Node3D"]
+[node name="FarmScene" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_xv6ju")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.20432, 0.235552, -1.88529)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.236, 0)
 
 [node name="Environment" type="Node3D" parent="."]
 
@@ -56,6 +57,11 @@ scene_to_load = "TownScene"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Triggers/ToTown"]
 shape = SubResource("BoxShape3D_4wl0f")
 
+[node name="Spawns" type="Node3D" parent="."]
+
+[node name="FromTown" type="Marker3D" parent="Spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.16, 0.236, -1.88529)
+
 [node name="Utility" type="Node3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="Utility" node_paths=PackedStringArray("player")]
@@ -71,5 +77,8 @@ transform = Transform3D(-0.5, -0.612372, 0.612373, 0, 0.707107, 0.707106, -0.866
 light_color = Color(0.976471, 0.996078, 1, 1)
 light_energy = 1.561
 shadow_enabled = true
+
+[node name="Timer" type="Timer" parent="Utility"]
+script = ExtResource("7_q3hex")
 
 [connection signal="body_entered" from="Triggers/ToTown" to="Triggers/ToTown" method="_on_body_entered"]

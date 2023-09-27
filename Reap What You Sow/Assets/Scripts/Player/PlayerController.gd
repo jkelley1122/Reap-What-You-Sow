@@ -2,7 +2,17 @@ extends CharacterBody3D
 
 #@export creates variables that can be changed in the editor
 #@onready creates variables that when the game is starting up
-#movement variables
+
+# Key Variables
+@export var max_health = 100.0
+@export var max_stamina = 100.0
+@export var max_sanity = 100.0
+@export var money = 0.0
+var health = 0.0
+var stamina = 0.0
+var sanity = 0.0
+
+# Movement variables
 @export var speed = 2.0
 var input_dir = Vector3()
 var rotate_dir = Vector3()
@@ -17,13 +27,16 @@ var direction = 1
 @onready var collision_shape = $Interact/CollisionShape3D
 
 
+
+
 # FixedUpdate (_process() is Update)
 func _physics_process(delta):
 	get_movement(delta)
 	# move_and_slide is similar to Unity's 'CharacterController.Move()'.
 	move_and_slide()
 	
-	if Input.is_action_just_pressed("ui_interact"):
+func _input(event):
+	if event.is_action_pressed("ui_interact"):
 		interact()
 
 # Start
@@ -33,7 +46,6 @@ func _ready():
 	input_dir.y = 0 #locks the y-axis so there's no floating or other funny business with gravity.  Keeps player grounded. 
 	input_dir = input_dir.normalized()
 	rotate_dir = input_dir.rotated(Vector3(0, 1, 0), deg_to_rad(90))
-	
 	
 	# Set Interact's collision shape's radius to what's in the editor
 	if collision_shape and collision_shape.shape:
@@ -114,13 +126,12 @@ func get_animation(moving, v, h):
 				animation_player.play("idle_forward")
 		
 func interact():
-		
 	for body in area3D.get_overlapping_bodies():
 		if body.is_in_group("npc"):
 			body.talk()
 			break
 		elif body.is_in_group("door"):
-			body.open()
+			body._on_body_entered(self)
 			break
 		elif body.is_in_group("minigame"):
 			body.is_fishing()
