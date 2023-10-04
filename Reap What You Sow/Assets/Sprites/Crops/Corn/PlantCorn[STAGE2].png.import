@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpljgopmj3tkg"
-path="res://.godot/imported/SpriteMan_HoldingROD.png-c4810770f2051bb34bca2bddf557c666.ctex"
+uid="uid://o35wx46xdcp"
+path="res://.godot/imported/PlantCorn[STAGE2].png-d582072b92808cac2578d9c6bbf9bb74.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/SpriteMan_HoldingROD.png"
-dest_files=["res://.godot/imported/SpriteMan_HoldingROD.png-c4810770f2051bb34bca2bddf557c666.ctex"]
+source_file="res://Assets/Sprites/Crops/Corn/PlantCorn[STAGE2].png"
+dest_files=["res://.godot/imported/PlantCorn[STAGE2].png-d582072b92808cac2578d9c6bbf9bb74.ctex"]
 
 [params]
 

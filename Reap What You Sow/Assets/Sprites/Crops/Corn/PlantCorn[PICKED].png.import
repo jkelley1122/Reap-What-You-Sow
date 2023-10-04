@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1xiit57xjtc8"
-path="res://.godot/imported/RanaDialogueSprite.png-194b54a07eaf9b6d2c727c42d8939319.ctex"
+uid="uid://irswwejjip2x"
+path="res://.godot/imported/PlantCorn[PICKED].png-e3a496e4684584867649cdeb6638ae45.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Dialogue/Rana/RanaDialogueSprite.png"
-dest_files=["res://.godot/imported/RanaDialogueSprite.png-194b54a07eaf9b6d2c727c42d8939319.ctex"]
+source_file="res://Assets/Sprites/Crops/Corn/PlantCorn[PICKED].png"
+dest_files=["res://.godot/imported/PlantCorn[PICKED].png-e3a496e4684584867649cdeb6638ae45.ctex"]
 
 [params]
 

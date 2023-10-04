@@ -31,6 +31,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.236, 0)
 
 [node name="NPC" parent="." instance=ExtResource("7_nfw08")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.29657, 0.222784, -1.0106)
+npc_name = null
 
 [node name="Environment" type="Node3D" parent="."]
 
