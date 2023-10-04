@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://buwlgdmnffabb"
-path="res://.godot/imported/SalmonFish_Sprite.png-900553371b516842b6b496fa32b1c0e8.ctex"
+path="res://.godot/imported/SalmonFish_Sprite.png-d0f2451cdf17e3878b2fecd23ee891cb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/SalmonFish_Sprite.png"
-dest_files=["res://.godot/imported/SalmonFish_Sprite.png-900553371b516842b6b496fa32b1c0e8.ctex"]
+source_file="res://Assets/Sprites/Fish/SalmonFish_Sprite.png"
+dest_files=["res://.godot/imported/SalmonFish_Sprite.png-d0f2451cdf17e3878b2fecd23ee891cb.ctex"]
 
 [params]
 

@@ -6,27 +6,30 @@ var reputation = 100
 @onready var dialogue_menu = $DialogueMenu
 @onready var animator: AnimationPlayer = $DialogueMenu/AnimationPlayer
 
-var rana_sprite = load("res://Assets/Sprites/Characters/Rana/spr_Rana_front.png")
-var hampton_sprite = load("res://Assets/Sprites/Characters/Hampton/spr_Hampton_front.png")
-var silas_sprite = load("res://Assets/Sprites/Characters/Silas/spr_Silas_Front.png")
-var guiness_sprite = load("res://Assets/Sprites/Characters/Guiness/spr_Guiness_front.png")
+var charpath = "res://Assets/Sprites/Characters/"
+var dialoguepath = null
+var sprite = null
 
 func _ready():
+	charpath += npc_name + "/"
+	dialoguepath = charpath + "Dialogue/"
+	
 	match npc_name:
 		"Rana":
-			$Sprite3D.texture = rana_sprite
+			sprite = load(charpath + "spr_Rana_front.png")
 			reputation = GameController.reputation[0]
 		"Hampton":
-			$Sprite3D.texture = hampton_sprite
+			sprite = load(charpath + "spr_Hampton_front.png")
 			reputation = GameController.reputation[1]
 		"Silas":
-			$Sprite3D.texture = silas_sprite
+			sprite = load(charpath + "spr_Silas_front.png")
 			reputation = GameController.reputation[2]
-		"Guiness":
-			$Sprite3D.texture = guiness_sprite
+		"Guinness":
+			sprite = load(charpath + "spr_Guinness_front.png")
 			reputation = GameController.reputation[3]
 
+	$Sprite3D.texture = sprite
 func talk():
 	if (dialogue_menu.has_method("start_dialogue")):
-		dialogue_menu.start_dialogue(npc_name, reputation)
+		dialogue_menu.start_dialogue(npc_name, reputation, dialoguepath)
 

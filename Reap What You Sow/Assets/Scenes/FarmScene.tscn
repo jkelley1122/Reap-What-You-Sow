@@ -77,4 +77,6 @@ light_color = Color(0.976471, 0.996078, 1, 1)
 light_energy = 1.561
 shadow_enabled = true
 
+[node name="NPCs" type="Node3D" parent="."]
+
 [connection signal="body_entered" from="Triggers/ToTown" to="Triggers/ToTown" method="_on_body_entered"]

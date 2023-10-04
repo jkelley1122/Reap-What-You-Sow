@@ -11,7 +11,7 @@ extends Node3D
 	#0 - Rana
 	#1 - Hampton
 	#2 - Silas
-	#3 - Guiness
+	#3 - Guinness
 @onready var spawn_point = null
 
 # Timer
@@ -37,7 +37,7 @@ func _ready():
 func change_scene():
 	current_scene = get_tree().current_scene
 	player = current_scene.get_node("Player")
-	npcs = current_scene.get_node("Utility").get_node("npcs")
+	npcs = current_scene.get_node("NPCs")
 	hud = player.get_node("HUD")
 	hud.update_display(time[0], time[1], time[2], time[3], time[4])
 	

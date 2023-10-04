@@ -28,10 +28,6 @@ script = ExtResource("1_fgrup")
 [node name="Player" parent="." instance=ExtResource("2_4vtn3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.236, 0)
 
-[node name="NPC" parent="." instance=ExtResource("7_nfw08")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.29657, 0.222784, -1.0106)
-npc_name = "Hampton"
-
 [node name="Environment" type="Node3D" parent="."]
 
 [node name="TestTown" parent="Environment" instance=ExtResource("4_uqjw7")]
@@ -148,6 +144,12 @@ transform = Transform3D(-0.5, -0.612372, 0.612373, 0, 0.707107, 0.707106, -0.866
 light_color = Color(0.976471, 0.996078, 1, 1)
 light_energy = 1.561
 shadow_enabled = true
+
+[node name="NPCs" type="Node3D" parent="."]
+
+[node name="Hampton" parent="NPCs" instance=ExtResource("7_nfw08")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.29657, 0.222784, -1.0106)
+npc_name = "Hampton"
 
 [connection signal="body_entered" from="Triggers/ToFarm" to="Triggers/ToFarm" method="_on_body_entered"]
 [connection signal="body_entered" from="Triggers/ToRiver" to="Triggers/ToRiver" method="_on_body_entered"]
