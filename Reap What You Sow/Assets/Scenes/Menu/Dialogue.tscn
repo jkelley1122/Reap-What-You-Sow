@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://b360bwskduo1i"]
 
-[ext_resource type="Shader" path="res://Assets/Shaders/blur.gdshader" id="1_vasvg"]
-[ext_resource type="Script" path="res://Assets/Scripts/Utility/Menu/DialogueController.gd" id="2_qbniv"]
+[ext_resource type="Shader" path="res://Assets/Shaders/blur.gdshader" id="1_f0srw"]
+[ext_resource type="Script" path="res://Assets/Scripts/Utility/Menu/DialogueController.gd" id="2_1cuon"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ob0xb"]
-shader = ExtResource("1_vasvg")
+shader = ExtResource("1_f0srw")
 shader_parameter/blur = 0.0
 shader_parameter/brightness = 1.0
 
@@ -177,7 +177,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color(1, 1, 1, 0)
-script = ExtResource("2_qbniv")
+script = ExtResource("2_1cuon")
 metadata/_edit_use_anchors_ = true
 
 [node name="CenterContainer" type="CenterContainer" parent="."]

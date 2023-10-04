@@ -1,8 +1,8 @@
 [gd_scene load_steps=22 format=3 uid="uid://ipqlxbyvi27p"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/Interactables/NPCController.gd" id="1_y3bpn"]
-[ext_resource type="Texture2D" uid="uid://ckanw6t5e2of7" path="res://Assets/Sprites/Character/Rana/spr_Rana_front.png" id="2_gcfmn"]
-[ext_resource type="PackedScene" uid="uid://b360bwskduo1i" path="res://Assets/Scenes/DialogueScene.tscn" id="3_6oo36"]
+[ext_resource type="Texture2D" uid="uid://ckanw6t5e2of7" path="res://Assets/Sprites/Characters/Rana/spr_Rana_front.png" id="2_jw5h4"]
+[ext_resource type="PackedScene" uid="uid://b360bwskduo1i" path="res://Assets/Scenes/Menu/Dialogue.tscn" id="3_6oo36"]
 
 [sub_resource type="Animation" id="Animation_5heao"]
 resource_name = "idle_BL"
@@ -278,12 +278,11 @@ size = Vector3(0.303681, 0.470473, 0.295718)
 [node name="NPC" type="CharacterBody3D" groups=["npc"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.234428, 0)
 script = ExtResource("1_y3bpn")
-npc_name = null
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 billboard = 1
 texture_filter = 0
-texture = ExtResource("2_gcfmn")
+texture = ExtResource("2_jw5h4")
 
 [node name="NPCAnimation" type="AnimationPlayer" parent="Sprite3D"]
 root_node = NodePath("../..")

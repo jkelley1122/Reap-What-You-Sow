@@ -33,7 +33,6 @@ func _on_body_entered(body: PhysicsBody3D):
 		$Sprite3D.texture = plants[crop][plants[crop].find($Sprite3D.texture) +1]
 
 func _physics_process(delta):
-	
 	if Input.is_action_just_pressed("next_crop"):
 		if crop == len(plants)-1:
 			crop = 0

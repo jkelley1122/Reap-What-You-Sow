@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://deg3v4mbyotiu"]
+[gd_scene load_steps=9 format=3 uid="uid://deg3v4mbyotiu"]
 
 [ext_resource type="PackedScene" uid="uid://gi5m7r10ckrb" path="res://Assets/PackedScenes/player.tscn" id="1_fggio"]
 [ext_resource type="PackedScene" uid="uid://cbis485v8pvsd" path="res://Assets/Models/TestRiver.glb" id="3_qrl4g"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" path="res://Assets/Scripts/Utility/AreaChange.gd" id="5_7tqre"]
 [ext_resource type="Script" path="res://Assets/Scripts/Interactables/fishing_minigame_controller.gd" id="5_pn741"]
 [ext_resource type="Script" path="res://Assets/Scripts/Utility/CameraController.gd" id="6_jbptj"]
-[ext_resource type="Script" path="res://Assets/Scripts/Utility/TimeController.gd" id="7_xyev2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mke1h"]
 size = Vector3(0.356405, 0.367621, 0.112553)
@@ -72,9 +71,6 @@ transform = Transform3D(-0.5, -0.612372, 0.612373, 0, 0.707107, 0.707106, -0.866
 light_color = Color(0.976471, 0.996078, 1, 1)
 light_energy = 1.561
 shadow_enabled = true
-
-[node name="Timer" type="Timer" parent="Utility"]
-script = ExtResource("7_xyev2")
 
 [connection signal="body_entered" from="Triggers/ToTown" to="Triggers/ToTown" method="_on_body_entered"]
 [connection signal="input_event" from="Triggers/FishingTrigger" to="Triggers/FishingTrigger" method="_on_input_event"]

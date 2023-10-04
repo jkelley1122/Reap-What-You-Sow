@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cyr50f2l25kg5"]
+[gd_scene load_steps=14 format=3 uid="uid://cyr50f2l25kg5"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/Utility/GameController.gd" id="1_fgrup"]
 [ext_resource type="PackedScene" uid="uid://gi5m7r10ckrb" path="res://Assets/PackedScenes/player.tscn" id="2_4vtn3"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" path="res://Assets/Scripts/Utility/AreaChange.gd" id="5_b43ou"]
 [ext_resource type="PackedScene" uid="uid://en8siof2j1ei" path="res://Assets/Models/TestSign.glb" id="5_rfkyj"]
 [ext_resource type="PackedScene" uid="uid://ipqlxbyvi27p" path="res://Assets/PackedScenes/npc.tscn" id="7_nfw08"]
-[ext_resource type="Script" path="res://Assets/Scripts/Utility/TimeController.gd" id="10_qtjvh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ql3li"]
 size = Vector3(1.82616, 1.68358, 1.8341)
@@ -31,7 +30,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.236, 0)
 
 [node name="NPC" parent="." instance=ExtResource("7_nfw08")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.29657, 0.222784, -1.0106)
-npc_name = null
+npc_name = "Hampton"
 
 [node name="Environment" type="Node3D" parent="."]
 
@@ -149,9 +148,6 @@ transform = Transform3D(-0.5, -0.612372, 0.612373, 0, 0.707107, 0.707106, -0.866
 light_color = Color(0.976471, 0.996078, 1, 1)
 light_energy = 1.561
 shadow_enabled = true
-
-[node name="Timer" type="Timer" parent="Utility"]
-script = ExtResource("10_qtjvh")
 
 [connection signal="body_entered" from="Triggers/ToFarm" to="Triggers/ToFarm" method="_on_body_entered"]
 [connection signal="body_entered" from="Triggers/ToRiver" to="Triggers/ToRiver" method="_on_body_entered"]

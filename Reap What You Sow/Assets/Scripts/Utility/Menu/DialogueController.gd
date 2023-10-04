@@ -21,7 +21,6 @@ func _input(event):
 func start_dialogue(name: String, reputation: float):
 	npc_name = name
 	npc_reputation = reputation
-	
 	setup_ui()
 	
 	animator.play("StartTalking")

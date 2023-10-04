@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://g6o2joig1o5d"
-path="res://.godot/imported/SamplePlayerSheet.png-d553d188acfbd1b38d6fda1a329564b3.ctex"
+uid="uid://ckanw6t5e2of7"
+path="res://.godot/imported/spr_Rana_front.png-acdab7bdc104fc00e4717913aa5084b1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Character/Player/SamplePlayerSheet.png"
-dest_files=["res://.godot/imported/SamplePlayerSheet.png-d553d188acfbd1b38d6fda1a329564b3.ctex"]
+source_file="res://Assets/Sprites/Characters/Rana/spr_Rana_front.png"
+dest_files=["res://.godot/imported/spr_Rana_front.png-acdab7bdc104fc00e4717913aa5084b1.ctex"]
 
 [params]
 

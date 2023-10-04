@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bb7ywxi0s1ep7"]
+[gd_scene load_steps=10 format=3 uid="uid://bb7ywxi0s1ep7"]
 
 [ext_resource type="PackedScene" uid="uid://gi5m7r10ckrb" path="res://Assets/PackedScenes/player.tscn" id="1_xv6ju"]
 [ext_resource type="PackedScene" uid="uid://dbo656wlewfct" path="res://Assets/Models/TestPlayerFarm.glb" id="3_wl5jr"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" path="res://Assets/Scripts/Utility/CameraController.gd" id="5_g2s2n"]
 [ext_resource type="Script" path="res://Assets/Scripts/Utility/AreaChange.gd" id="5_uh8jm"]
 [ext_resource type="PackedScene" uid="uid://mhqv0dhfoovh" path="res://Assets/Models/TestHouse.glb" id="6_j6wjd"]
-[ext_resource type="Script" path="res://Assets/Scripts/Utility/TimeController.gd" id="7_q3hex"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jl0yc"]
 size = Vector3(1.82616, 1.68358, 1.8341)
@@ -77,8 +76,5 @@ transform = Transform3D(-0.5, -0.612372, 0.612373, 0, 0.707107, 0.707106, -0.866
 light_color = Color(0.976471, 0.996078, 1, 1)
 light_energy = 1.561
 shadow_enabled = true
-
-[node name="Timer" type="Timer" parent="Utility"]
-script = ExtResource("7_q3hex")
 
 [connection signal="body_entered" from="Triggers/ToTown" to="Triggers/ToTown" method="_on_body_entered"]

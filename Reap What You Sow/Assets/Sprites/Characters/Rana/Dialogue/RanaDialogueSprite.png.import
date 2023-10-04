@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckanw6t5e2of7"
-path="res://.godot/imported/spr_Rana_front.png-55c4807980f786947be7745997244f7b.ctex"
+uid="uid://1xiit57xjtc8"
+path="res://.godot/imported/RanaDialogueSprite.png-c2f5ada8678ab8ccb35bd9e11c72d4f8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Character/Rana/spr_Rana_front.png"
-dest_files=["res://.godot/imported/spr_Rana_front.png-55c4807980f786947be7745997244f7b.ctex"]
+source_file="res://Assets/Sprites/Characters/Rana/Dialogue/RanaDialogueSprite.png"
+dest_files=["res://.godot/imported/RanaDialogueSprite.png-c2f5ada8678ab8ccb35bd9e11c72d4f8.ctex"]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

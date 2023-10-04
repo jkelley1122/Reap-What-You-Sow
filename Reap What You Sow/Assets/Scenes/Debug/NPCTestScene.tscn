@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8to1cyosbvkh"]
+
+[ext_resource type="PackedScene" uid="uid://gi5m7r10ckrb" path="res://Assets/PackedScenes/player.tscn" id="1_6502b"]
+[ext_resource type="PackedScene" uid="uid://ipqlxbyvi27p" path="res://Assets/PackedScenes/npc.tscn" id="2_3q6qw"]
+[ext_resource type="PackedScene" uid="uid://3457a5so8lew" path="res://Assets/Models/TestChurch.glb" id="3_vj1iv"]
+[ext_resource type="Script" path="res://Assets/Scripts/Utility/CameraController.gd" id="5_gy5sh"]
+
+[node name="ChurchScene" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_6502b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.236, 0)
+interaction_range = 0.5
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="TestChurch" parent="Environment" instance=ExtResource("3_vj1iv")]
+skeleton = NodePath("../..")
+
+[node name="Spawns" type="Node3D" parent="."]
+
+[node name="FromFarm" type="Marker3D" parent="Spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.236, 4.16)
+
+[node name="Utility" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Utility" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.707107, -0.353553, 0.612373, 0, 0.866026, 0.5, -0.707107, -0.353553, 0.612373, 5.333, 4.715, 5.424)
+projection = 1
+size = 3.0
+script = ExtResource("5_gy5sh")
+player = NodePath("../../Player")
+offset = Vector3(5.333, 4.715, 5.424)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Utility"]
+transform = Transform3D(-0.5, -0.612372, 0.612373, 0, 0.707107, 0.707106, -0.866025, 0.353553, -0.353554, 0, 5.33816, 0)
+light_color = Color(0.976471, 0.996078, 1, 1)
+light_energy = 1.561
+shadow_enabled = true
+
+[node name="NPCs" type="Node3D" parent="."]
+
+[node name="Guiness" parent="NPCs" instance=ExtResource("2_3q6qw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.995051, 0.234428, 1.88615)
+npc_name = "Guiness"
+
+[node name="Hampton" parent="NPCs" instance=ExtResource("2_3q6qw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.980629, 0.234428, 1.88842)
+npc_name = "Hampton"
+
+[node name="Rana" parent="NPCs" instance=ExtResource("2_3q6qw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.02603, 0.222784, 1.9618)
+
+[node name="Silas" parent="NPCs" instance=ExtResource("2_3q6qw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.04496, 0.234428, 1.88679)
+npc_name = "Silas"

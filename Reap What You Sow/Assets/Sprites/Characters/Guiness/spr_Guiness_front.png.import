@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dyaek0awd4s0l"
-path="res://.godot/imported/spr_Silas_Front.png-42495ecf0479a4f9013d79e1c2be3163.ctex"
+uid="uid://besx23wknw80q"
+path="res://.godot/imported/spr_Guiness_front.png-216bcdd332af08f79791aadf0449c167.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Character/Silas/spr_Silas_Front.png"
-dest_files=["res://.godot/imported/spr_Silas_Front.png-42495ecf0479a4f9013d79e1c2be3163.ctex"]
+source_file="res://Assets/Sprites/Characters/Guiness/spr_Guiness_front.png"
+dest_files=["res://.godot/imported/spr_Guiness_front.png-216bcdd332af08f79791aadf0449c167.ctex"]
 
 [params]
 

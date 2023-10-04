@@ -1,10 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://gi5m7r10ckrb"]
+[gd_scene load_steps=26 format=3 uid="uid://gi5m7r10ckrb"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/Player/PlayerController.gd" id="1_gs0do"]
-[ext_resource type="Texture2D" uid="uid://g6o2joig1o5d" path="res://Assets/Sprites/Character/Player/SamplePlayerSheet.png" id="2_lvgoh"]
+[ext_resource type="Texture2D" uid="uid://g6o2joig1o5d" path="res://Assets/Sprites/Characters/Player/SamplePlayerSheet.png" id="2_c5iha"]
 [ext_resource type="Script" path="res://Assets/Scripts/Farming/FarmPlotController.gd" id="3_ol46i"]
 [ext_resource type="PackedScene" uid="uid://dbbtcdgdjf42y" path="res://Assets/PackedScenes/PlantNode.tscn" id="4_ic4ba"]
-[ext_resource type="PackedScene" uid="uid://bd7l4i2vouuvo" path="res://Assets/Scenes/PauseScene.tscn" id="5_17xuy"]
+[ext_resource type="PackedScene" uid="uid://bd7l4i2vouuvo" path="res://Assets/Scenes/Menu/Pause.tscn" id="5_g25wc"]
+[ext_resource type="PackedScene" uid="uid://bbm8gu12qqwku" path="res://Assets/Scenes/Menu/HUD.tscn" id="6_iw6kw"]
 
 [sub_resource type="Animation" id="Animation_5heao"]
 resource_name = "idle_BL"
@@ -190,6 +191,22 @@ tracks/0/keys = {
 "values": [36, 37, 38, 39, 40, 41]
 }
 
+[sub_resource type="Animation" id="Animation_dpyj7"]
+resource_name = "walk_back"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [22, 23, 24, 25, 26, 27]
+}
+
 [sub_resource type="Animation" id="Animation_cc24p"]
 resource_name = "walk_forward"
 length = 0.6
@@ -238,22 +255,6 @@ tracks/0/keys = {
 "values": [15, 16, 17, 18, 19, 20]
 }
 
-[sub_resource type="Animation" id="Animation_dpyj7"]
-resource_name = "walk_back"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [22, 23, 24, 25, 26, 27]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p6ncg"]
 _data = {
 "idle_BL": SubResource("Animation_5heao"),
@@ -286,7 +287,7 @@ script = ExtResource("1_gs0do")
 [node name="Sprite3D" type="Sprite3D" parent="."]
 billboard = 1
 texture_filter = 0
-texture = ExtResource("2_lvgoh")
+texture = ExtResource("2_c5iha")
 hframes = 7
 vframes = 8
 frame = 22
@@ -310,5 +311,6 @@ plant_node = ExtResource("4_ic4ba")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interact"]
 shape = SubResource("SphereShape3D_lgx15")
 
-[node name="PauseMenu" parent="." instance=ExtResource("5_17xuy")]
-anchors_preset = 15
+[node name="PauseMenu" parent="." instance=ExtResource("5_g25wc")]
+
+[node name="HUD" parent="." instance=ExtResource("6_iw6kw")]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1xiit57xjtc8"
-path="res://.godot/imported/RanaDialogueSprite.png-0df3331db4898099e874d5f9310bb589.ctex"
+uid="uid://dyaek0awd4s0l"
+path="res://.godot/imported/spr_Silas_Front.png-f3e1432d395ab8b23f9c6c9fe897bd80.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Character/Rana/Dialogue/RanaDialogueSprite.png"
-dest_files=["res://.godot/imported/RanaDialogueSprite.png-0df3331db4898099e874d5f9310bb589.ctex"]
+source_file="res://Assets/Sprites/Characters/Silas/spr_Silas_Front.png"
+dest_files=["res://.godot/imported/spr_Silas_Front.png-f3e1432d395ab8b23f9c6c9fe897bd80.ctex"]
 
 [params]
 

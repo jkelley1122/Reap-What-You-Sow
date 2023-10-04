@@ -1,0 +1,61 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbm8gu12qqwku"]
+
+[ext_resource type="Shader" path="res://Assets/Shaders/blur.gdshader" id="1_d3srs"]
+[ext_resource type="Script" path="res://Assets/Scripts/Utility/Menu/HUDController.gd" id="2_njykt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ob0xb"]
+shader = ExtResource("1_d3srs")
+shader_parameter/blur = 0.0
+shader_parameter/brightness = 1.0
+
+[node name="HUD" type="ColorRect"]
+process_mode = 3
+material = SubResource("ShaderMaterial_ob0xb")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(1, 1, 1, 0)
+script = ExtResource("2_njykt")
+metadata/_edit_use_anchors_ = true
+
+[node name="Time" type="Label" parent="."]
+offset_left = 30.0
+offset_top = 23.0
+offset_right = 78.0
+offset_bottom = 49.0
+text = "Time"
+
+[node name="Health" type="Label" parent="."]
+offset_left = 30.0
+offset_top = 60.0
+offset_right = 78.0
+offset_bottom = 86.0
+text = "Health"
+
+[node name="Stamina" type="Label" parent="."]
+offset_left = 30.0
+offset_top = 94.0
+offset_right = 78.0
+offset_bottom = 120.0
+text = "Stamina"
+
+[node name="Sanity" type="Label" parent="."]
+offset_left = 29.0
+offset_top = 130.0
+offset_right = 77.0
+offset_bottom = 156.0
+text = "Sanity"
+
+[node name="Money" type="Label" parent="."]
+offset_left = 28.0
+offset_top = 170.0
+offset_right = 76.0
+offset_bottom = 196.0
+text = "Money"
+
+[node name="DEBUG_FPS" type="Label" parent="."]
+offset_left = 28.0
+offset_top = 213.0
+offset_right = 76.0
+offset_bottom = 239.0
+text = "FPS"

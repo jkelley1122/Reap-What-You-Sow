@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c2dk6avnflv7a"]
 
-[ext_resource type="Script" path="res://Assets/Scripts/Utility/Menu/Option_Controller.gd" id="1_xn8xr"]
+[ext_resource type="Script" path="res://Assets/Scripts/Utility/Menu/Option_Controller.gd" id="1_dm6as"]
 
 [node name="Options" type="Control"]
 layout_mode = 3
@@ -17,7 +17,7 @@ offset_top = 88.0
 offset_right = 213.0
 offset_bottom = 134.0
 text = "Key Bindings"
-script = ExtResource("1_xn8xr")
+script = ExtResource("1_dm6as")
 
 [node name="Keybind_Popup" type="Popup" parent="Keybinds"]
 title = "Keybinds"
@@ -32,7 +32,7 @@ offset_top = 144.0
 offset_right = 212.0
 offset_bottom = 190.0
 text = "Audio"
-script = ExtResource("1_xn8xr")
+script = ExtResource("1_dm6as")
 
 [node name="Audio_Popup" type="Popup" parent="Audio"]
 title = "Audio"
@@ -47,7 +47,7 @@ offset_top = 200.0
 offset_right = 212.0
 offset_bottom = 246.0
 text = "Video"
-script = ExtResource("1_xn8xr")
+script = ExtResource("1_dm6as")
 
 [node name="Video_Popup" type="Popup" parent="Video"]
 title = "Video"
@@ -62,7 +62,7 @@ offset_top = 256.0
 offset_right = 212.0
 offset_bottom = 302.0
 text = "Display"
-script = ExtResource("1_xn8xr")
+script = ExtResource("1_dm6as")
 
 [node name="Display_Popup" type="Popup" parent="Display"]
 title = "Display"
@@ -71,12 +71,13 @@ size = Vector2i(500, 500)
 borderless = false
 
 [node name="Back" type="Button" parent="."]
+layout_mode = 0
 offset_left = 80.0
 offset_top = 456.0
 offset_right = 212.0
 offset_bottom = 502.0
 text = "Back"
-script = ExtResource("1_xn8xr")
+script = ExtResource("1_dm6as")
 
 [connection signal="pressed" from="Keybinds" to="Keybinds" method="_on_keybind_button_pressed"]
 [connection signal="popup_hide" from="Keybinds/Keybind_Popup" to="Keybinds" method="_on_keybind_popup_popup_hide"]

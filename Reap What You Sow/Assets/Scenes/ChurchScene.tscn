@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bje6fpiku3atu"]
+[gd_scene load_steps=8 format=3 uid="uid://bje6fpiku3atu"]
 
 [ext_resource type="PackedScene" uid="uid://gi5m7r10ckrb" path="res://Assets/PackedScenes/player.tscn" id="1_dx2gp"]
 [ext_resource type="PackedScene" uid="uid://3457a5so8lew" path="res://Assets/Models/TestChurch.glb" id="3_3itmb"]
 [ext_resource type="Script" path="res://Assets/Scripts/Utility/AreaChange.gd" id="4_s8rew"]
-[ext_resource type="Script" path="res://Assets/Scripts/Utility/TimeController.gd" id="6_suakh"]
 [ext_resource type="Script" path="res://Assets/Scripts/Utility/CameraController.gd" id="7_xxw5x"]
 [ext_resource type="PackedScene" uid="uid://ipqlxbyvi27p" path="res://Assets/PackedScenes/npc.tscn" id="8_fo30i"]
 
@@ -57,6 +56,3 @@ transform = Transform3D(-0.5, -0.612372, 0.612373, 0, 0.707107, 0.707106, -0.866
 light_color = Color(0.976471, 0.996078, 1, 1)
 light_energy = 1.561
 shadow_enabled = true
-
-[node name="Timer" type="Timer" parent="Utility"]
-script = ExtResource("6_suakh")

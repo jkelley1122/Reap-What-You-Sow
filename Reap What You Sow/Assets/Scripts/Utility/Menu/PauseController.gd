@@ -1,4 +1,4 @@
-extends Node
+extends ColorRect
 
 @onready var animator: AnimationPlayer = $AnimationPlayer
 @onready var resume_button: Button = find_child("ResumeButton")

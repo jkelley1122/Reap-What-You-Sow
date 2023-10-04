@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://bd7l4i2vouuvo"]
 
-[ext_resource type="Shader" path="res://Assets/Shaders/blur.gdshader" id="1_tvs3a"]
-[ext_resource type="Script" path="res://Assets/Scripts/Utility/Menu/PauseController.gd" id="2_s33og"]
+[ext_resource type="Shader" path="res://Assets/Shaders/blur.gdshader" id="1_k8ip0"]
+[ext_resource type="Script" path="res://Assets/Scripts/Utility/Menu/PauseController.gd" id="2_802lb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ob0xb"]
-shader = ExtResource("1_tvs3a")
+shader = ExtResource("1_k8ip0")
 shader_parameter/blur = 0.0
 shader_parameter/brightness = 1.0
 
@@ -177,7 +177,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color(1, 1, 1, 0)
-script = ExtResource("2_s33og")
+script = ExtResource("2_802lb")
 metadata/_edit_use_anchors_ = true
 
 [node name="CenterContainer" type="CenterContainer" parent="."]

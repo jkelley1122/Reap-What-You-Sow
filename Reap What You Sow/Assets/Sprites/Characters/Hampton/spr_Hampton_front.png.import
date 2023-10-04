@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://besx23wknw80q"
-path="res://.godot/imported/spr_Guiness_front.png-3b5e0e2526fb52e10a0c43662a97abaa.ctex"
+uid="uid://c44hxa1ub4wg7"
+path="res://.godot/imported/spr_Hampton_front.png-e81242e52c09553c37bfdfd55c058cbb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Character/Guiness/spr_Guiness_front.png"
-dest_files=["res://.godot/imported/spr_Guiness_front.png-3b5e0e2526fb52e10a0c43662a97abaa.ctex"]
+source_file="res://Assets/Sprites/Characters/Hampton/spr_Hampton_front.png"
+dest_files=["res://.godot/imported/spr_Hampton_front.png-e81242e52c09553c37bfdfd55c058cbb.ctex"]
 
 [params]
 
