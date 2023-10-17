@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c2dk6avnflv7a"]
+[gd_scene load_steps=3 format=3 uid="uid://c2dk6avnflv7a"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/Utility/Menu/Option_Controller.gd" id="1_dm6as"]
+[ext_resource type="Texture2D" uid="uid://buwlgdmnffabb" path="res://Assets/Sprites/Fish/SalmonFish_Sprite.png" id="2_xntvg"]
 
 [node name="Options" type="Control"]
 layout_mode = 3
@@ -79,10 +80,15 @@ offset_bottom = 502.0
 text = "Back"
 script = ExtResource("1_dm6as")
 
+[node name="SalmonFishSprite" type="Sprite2D" parent="."]
+position = Vector2(576, 328)
+scale = Vector2(17.125, 15.125)
+texture = ExtResource("2_xntvg")
+
 [connection signal="pressed" from="Keybinds" to="Keybinds" method="_on_keybind_button_pressed"]
 [connection signal="popup_hide" from="Keybinds/Keybind_Popup" to="Keybinds" method="_on_keybind_popup_popup_hide"]
-[connection signal="pressed" from="Audio" to="Audio" method="_on_audio_button_pressed"]
 [connection signal="pressed" from="Audio" to="Audio" method="_on_pressed"]
+[connection signal="pressed" from="Audio" to="Audio" method="_on_audio_button_pressed"]
 [connection signal="popup_hide" from="Audio/Audio_Popup" to="Keybinds" method="_on_keybind_popup_popup_hide"]
 [connection signal="pressed" from="Video" to="Video" method="_on_video_button_pressed"]
 [connection signal="popup_hide" from="Video/Video_Popup" to="Keybinds" method="_on_keybind_popup_popup_hide"]

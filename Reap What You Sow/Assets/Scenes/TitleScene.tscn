@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://uinp0minwmak"]
+[gd_scene load_steps=3 format=3 uid="uid://uinp0minwmak"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/Utility/Menu/TitleController.gd" id="1_hsmoq"]
+[ext_resource type="Texture2D" uid="uid://brprkxvpqpogf" path="res://Assets/Sprites/LogoV2Full.png" id="2_3h5io"]
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -15,29 +16,34 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hsmoq")
 
+[node name="LogoV2Full" type="Sprite2D" parent="."]
+position = Vector2(481, 430)
+scale = Vector2(0.6, 0.611111)
+texture = ExtResource("2_3h5io")
+
 [node name="StartButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 59.0
-offset_top = 425.0
-offset_right = 256.0
-offset_bottom = 475.0
+offset_left = 386.0
+offset_top = 542.0
+offset_right = 583.0
+offset_bottom = 592.0
 text = "Start
 "
 
 [node name="QuitButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 59.0
-offset_top = 561.0
-offset_right = 256.0
-offset_bottom = 611.0
+offset_left = 386.0
+offset_top = 678.0
+offset_right = 583.0
+offset_bottom = 728.0
 text = "Quit"
 
 [node name="Options" type="Button" parent="."]
 layout_mode = 0
-offset_left = 58.0
-offset_top = 490.0
-offset_right = 255.0
-offset_bottom = 544.0
+offset_left = 385.0
+offset_top = 607.0
+offset_right = 582.0
+offset_bottom = 661.0
 text = "Options
 "
 

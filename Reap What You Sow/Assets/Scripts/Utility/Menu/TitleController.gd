@@ -21,6 +21,6 @@ func _on_quit_button_pressed():
 
 
 func _on_options_pressed():
-	get_tree().change_scene_to_file("res://Assets/Scenes/Options.tscn")
+	get_tree().change_scene_to_file("res://Assets/Scenes/Menu/Options.tscn")
 	
 
