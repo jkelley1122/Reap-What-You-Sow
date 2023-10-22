@@ -17,3 +17,4 @@ func update_display(seconds, minutes, days, months, years):
 	$Sanity.text = "Sanity: " + str(GameController.player_sanity)
 	$Money.text = "Money: " + str(GameController.player_money)
 	$DEBUG_FPS.text = "[DEBUG] FPS: " + str(Engine.get_frames_per_second())
+	$Cur_Crop.text = 'Crop: ' + str(GameController.player_crop)

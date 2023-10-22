@@ -4,8 +4,14 @@ extends Node3D
 # PackedScene in Godot is similar to prefabs in Unity.
 @export var plant_node: PackedScene
 
+var croptype
 var plot_points: Array = []
+var plants: Array = []
 
+func _ready():
+	croptype = 0
+	plants = ['Corn', 'Carrot', 'Blackberry', 'Raspberry', 'Tobacco', 'Broccoli']
+	
 func _process(delta):
 	# Detect user input (godot uses keybinds)
 	if Input.is_action_just_released("ui_select"):
@@ -17,6 +23,12 @@ func _process(delta):
 		if plot_points.size() == 2:
 			def_plot()
 			plot_points.clear()
+	if Input.is_action_just_pressed("next_crop"):
+		if croptype == len(plants)-1:
+			croptype = 0
+		else:
+			croptype += 1
+		GameController.player_crop = plants[croptype]
 
 func def_plot():
 	var valid = true
@@ -58,5 +70,6 @@ func define_plot_space():
 			var new_plant = plant_node.instantiate()
 			get_tree().current_scene.add_child(new_plant)
 			new_plant.global_transform.origin = Vector3(x, 0.05, z)
+			new_plant.find_child('Sprite3D').crop = croptype ############### New WIP shit #####################
 			z += z_step
 		x += x_step

@@ -1,7 +1,5 @@
-[gd_scene load_steps=6 format=3 uid="uid://dbbtcdgdjf42y"]
+[gd_scene load_steps=4 format=3 uid="uid://dbbtcdgdjf42y"]
 
-[ext_resource type="Script" path="res://Assets/Scripts/Farming/PlantingController.gd" id="2_ubr1r"]
-[ext_resource type="Material" uid="uid://bj6guvvom1yl" path="res://Assets/Materials/MAT_DEV_PINK.tres" id="3_h5dmd"]
 [ext_resource type="Texture2D" uid="uid://bv0pa83ns7qyc" path="res://Assets/Sprites/Crops/Carrot/PlantCarrot[STAGE1]_Sprite.png" id="3_ovn8s"]
 [ext_resource type="Script" path="res://Assets/Scripts/Farming/PlantBehavior.gd" id="4_bn3rb"]
 
@@ -13,8 +11,6 @@ transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
-script = ExtResource("2_ubr1r")
-new_mat = ExtResource("3_h5dmd")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_sd20m")
