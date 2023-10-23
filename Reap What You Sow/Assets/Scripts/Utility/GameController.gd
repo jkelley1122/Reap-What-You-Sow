@@ -7,11 +7,13 @@ extends Node3D
 @onready var player_money = 0.0
 @onready var player_position = Vector3(0, 0.236, 0)
 @onready var time = [55, 23, 29, 3, 0]
-@onready var reputation = [100, 75, 50, 25]
+@onready var reputation = [100, 75, 50, 25, 15, 10]
 	#0 - Rana
 	#1 - Hampton
 	#2 - Silas
 	#3 - Guinness
+	#4 - Sheriff
+	#5 - Iris
 @onready var spawn_point = null
 
 # Timer

@@ -19,6 +19,7 @@ script = ExtResource("2_njykt")
 metadata/_edit_use_anchors_ = true
 
 [node name="Time" type="Label" parent="."]
+layout_mode = 0
 offset_left = 30.0
 offset_top = 23.0
 offset_right = 78.0
@@ -26,6 +27,7 @@ offset_bottom = 49.0
 text = "Time"
 
 [node name="Health" type="Label" parent="."]
+layout_mode = 0
 offset_left = 30.0
 offset_top = 60.0
 offset_right = 78.0
@@ -33,6 +35,7 @@ offset_bottom = 86.0
 text = "Health"
 
 [node name="Stamina" type="Label" parent="."]
+layout_mode = 0
 offset_left = 30.0
 offset_top = 94.0
 offset_right = 78.0
@@ -40,6 +43,7 @@ offset_bottom = 120.0
 text = "Stamina"
 
 [node name="Sanity" type="Label" parent="."]
+layout_mode = 0
 offset_left = 29.0
 offset_top = 130.0
 offset_right = 77.0
@@ -47,6 +51,7 @@ offset_bottom = 156.0
 text = "Sanity"
 
 [node name="Money" type="Label" parent="."]
+layout_mode = 0
 offset_left = 28.0
 offset_top = 170.0
 offset_right = 76.0
@@ -54,6 +59,7 @@ offset_bottom = 196.0
 text = "Money"
 
 [node name="DEBUG_FPS" type="Label" parent="."]
+layout_mode = 0
 offset_left = 28.0
 offset_top = 213.0
 offset_right = 76.0

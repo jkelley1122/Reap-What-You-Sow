@@ -27,6 +27,12 @@ func _ready():
 		"Guinness":
 			sprite = load(charpath + "spr_Guinness_front.png")
 			reputation = GameController.reputation[3]
+		"Iris":
+			sprite = load(charpath + "spr_Iris_front.png")
+			reputation = GameController.reputation[4]
+		"Sheriff":
+			sprite = load(charpath + "spr_Sheriff_front.png")
+			reputation = GameController.reputation[5]
 
 	$Sprite3D.texture = sprite
 func talk():

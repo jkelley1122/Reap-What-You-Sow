@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dstce51to2yun"
-path="res://.godot/imported/HamptonDialogueSprite.png-b8e150352db8926756cf93a8b63e4d95.ctex"
+uid="uid://vsxah1say5cr"
+path="res://.godot/imported/spr_Sheriff_front.png-686b82eb1da92d614de3fdd43f364811.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Characters/Hampton/Dialogue/HamptonDialogueSprite.png"
-dest_files=["res://.godot/imported/HamptonDialogueSprite.png-b8e150352db8926756cf93a8b63e4d95.ctex"]
+source_file="res://Assets/Sprites/Characters/Sheriff/spr_Sheriff_front.png"
+dest_files=["res://.godot/imported/spr_Sheriff_front.png-686b82eb1da92d614de3fdd43f364811.ctex"]
 
 [params]
 

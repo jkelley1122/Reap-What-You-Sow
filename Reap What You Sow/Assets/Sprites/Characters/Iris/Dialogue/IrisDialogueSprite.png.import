@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dstce51to2yun"
-path="res://.godot/imported/HamptonDialogueSprite.png-b8e150352db8926756cf93a8b63e4d95.ctex"
+uid="uid://cub0irslt5anc"
+path="res://.godot/imported/IrisDialogueSprite.png-43c7e577f0af87bb404fbac5a0d6811e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Characters/Hampton/Dialogue/HamptonDialogueSprite.png"
-dest_files=["res://.godot/imported/HamptonDialogueSprite.png-b8e150352db8926756cf93a8b63e4d95.ctex"]
+source_file="res://Assets/Sprites/Characters/Iris/Dialogue/IrisDialogueSprite.png"
+dest_files=["res://.godot/imported/IrisDialogueSprite.png-43c7e577f0af87bb404fbac5a0d6811e.ctex"]
 
 [params]
 

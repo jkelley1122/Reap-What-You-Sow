@@ -47,8 +47,16 @@ npc_name = "Guinness"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.980629, 0.234428, 1.88842)
 npc_name = "Hampton"
 
+[node name="Sheriff" parent="NPCs" instance=ExtResource("2_3q6qw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.980629, 0.234428, 0.646667)
+npc_name = "Sheriff"
+
 [node name="Rana" parent="NPCs" instance=ExtResource("2_3q6qw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.02603, 0.222784, 1.9618)
+
+[node name="Iris" parent="NPCs" instance=ExtResource("2_3q6qw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.02603, 0.222784, 0.554342)
+npc_name = "Iris"
 
 [node name="Silas" parent="NPCs" instance=ExtResource("2_3q6qw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.04496, 0.234428, 1.88679)
