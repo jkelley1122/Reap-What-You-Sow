@@ -135,6 +135,7 @@ func interact():
 			break
 		elif body.is_in_group("minigame"):
 			body._on_area_entered(self)
+			
 			break
 
 
