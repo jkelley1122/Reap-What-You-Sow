@@ -65,3 +65,11 @@ offset_top = 213.0
 offset_right = 76.0
 offset_bottom = 239.0
 text = "FPS"
+
+[node name="Cur_Crop" type="Label" parent="."]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 600.0
+offset_right = 76.0
+offset_bottom = 626.0
+text = "Crop: "
