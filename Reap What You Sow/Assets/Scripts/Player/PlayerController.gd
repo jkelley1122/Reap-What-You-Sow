@@ -22,12 +22,29 @@ var rotate_dir = Vector3()
 @onready var area3D = $Interact
 var direction = 1
 
+
 # Interaction Variables
 @export var interaction_range : float = 2.0
 @onready var collision_shape = $Interact/CollisionShape3D
+var is_sleeping = false;
 
+# Inventory Variables
+@onready var inventory = $Inventory
+var cur_item = null
+var starting_items = {
+	"Hoe": 1,
+	"Fishing Pole": 1,
+	"Corn Seeds": 3,
+	"Carrot Seeds": 3,
+	"Blackberry Cuttings": 3,
+	"Raspberry Canes": 3,
+	"Tobacco Seeds": 3,
+	"Broccoli Seeds": 3,
+	"Sleeping bag": 1
+}
 
-
+# HUD Variables
+@onready var HUD = $HUD
 
 # FixedUpdate (_process() is Update)
 func _physics_process(delta):
@@ -46,6 +63,13 @@ func _ready():
 	input_dir.y = 0 #locks the y-axis so there's no floating or other funny business with gravity.  Keeps player grounded. 
 	input_dir = input_dir.normalized()
 	rotate_dir = input_dir.rotated(Vector3(0, 1, 0), deg_to_rad(90))
+	
+	# Adding items to the inventory.
+	for item in starting_items.keys():
+		inventory.add_item(item, starting_items[item])
+	
+	HUD.update_inventory_ui()
+
 	
 	# Set Interact's collision shape's radius to what's in the editor
 	if collision_shape and collision_shape.shape:
@@ -126,17 +150,24 @@ func get_animation(moving, v, h):
 				animation_player.play("idle_forward")
 		
 func interact():
+	var interacted = false
 	for body in area3D.get_overlapping_bodies():
-		if body.is_in_group("npc"):
-			body.talk()
+		if !interacted:
+			if body.is_in_group("npc"):
+				body.talk()
+				break
+			elif body.is_in_group("door"):
+				body._on_body_entered(self)
+				break
+			elif body.is_in_group("minigame"):
+				body._on_area_entered(self)
+				break
+		else:
 			break
-		elif body.is_in_group("door"):
-			body._on_body_entered(self)
-			break
-		elif body.is_in_group("minigame"):
-			body._on_area_entered(self)
-			
-			break
+	if !interacted:
+		if cur_item == "Sleeping bag":
+			is_sleeping = true
 
-
-	
+func set_cur_item(item_name):
+	cur_item = item_name
+	GameController.player_item = cur_item

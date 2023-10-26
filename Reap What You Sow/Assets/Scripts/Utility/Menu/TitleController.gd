@@ -12,6 +12,7 @@ func _process(delta):
 
 
 func _on_start_button_pressed():
+	GameController.game_start = true;
 	get_tree().change_scene_to_file("res://Assets/Scenes/TownScene.tscn")
 	
 

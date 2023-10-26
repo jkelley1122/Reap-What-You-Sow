@@ -7,7 +7,13 @@ extends Node3D
 @onready var player_money = 0.0
 @onready var player_crop = 'carrot'
 @onready var player_position = Vector3(0, 0.236, 0)
+@onready var player_item = "No Item"
 @onready var time = [55, 23, 29, 3, 0]
+	#0 - Seconds
+	#1 - Minutes
+	#2 - Days
+	#3 - Months
+	#4 - Years
 @onready var reputation = [100, 75, 50, 25, 15, 10]
 	#0 - Rana
 	#1 - Hampton
@@ -30,12 +36,43 @@ var player = null
 var npcs = null
 var hud = null
 
+var game_start = false;
+
 func _ready():
 	self.add_child(timer)
 	timer.set_wait_time(1)  # 1 second in real-time
 	timer.timeout.connect(_on_timer_timeout)
 	timer.start()
 	
+	
+func _process(delta):
+	if player:
+		if GameController.game_start:
+			change_scene()
+			GameController.game_start = false
+		if player.is_sleeping:
+			time[0] = 0
+			if time[1] < 6:
+				time[2] = time[2]
+			elif time[2] >= DAYS_IN_MONTH:
+				time[2] = 0
+				time[3] = time[3]+1
+			else:
+				time[2] = time[2] + 1
+			time[1] = 6
+			
+			if time[3] >= MONTHS_IN_YEAR:
+				time[3] = 0
+				time[4] = time[4]+1
+			else:
+				time[3] = time[3]
+				time[4] = time[4]
+
+			player.is_sleeping = false
+		
+	if hud:
+		hud.update_display(time[0], time[1], time[2], time[3], time[4])
+
 # Called when the node enters the scene tree for the first time.
 func change_scene():
 	current_scene = get_tree().current_scene
@@ -57,6 +94,7 @@ func set_player_values(player):
 	player.sanity = GameController.player_sanity
 	player.money = GameController.player_money
 	player.position = GameController.player_position
+	player.cur_item = GameController.player_item
 	player.get_node("FarmPlot").croptype = player.get_node("FarmPlot").plants.find(GameController.player_crop)
 
 func _on_timer_timeout():
@@ -73,6 +111,3 @@ func _on_timer_timeout():
 				if time[3] >= MONTHS_IN_YEAR:
 					time[3] = 0
 					time[4] += 1
-
-	if hud:
-		hud.update_display(time[0], time[1], time[2], time[3], time[4])

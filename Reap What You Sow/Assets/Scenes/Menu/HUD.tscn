@@ -66,6 +66,14 @@ offset_right = 76.0
 offset_bottom = 239.0
 text = "FPS"
 
+[node name="Cur_Item" type="Label" parent="."]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 569.84
+offset_right = 76.0
+offset_bottom = 595.84
+text = "Item:"
+
 [node name="Cur_Crop" type="Label" parent="."]
 layout_mode = 0
 offset_left = 28.0
@@ -73,3 +81,12 @@ offset_top = 600.0
 offset_right = 76.0
 offset_bottom = 626.0
 text = "Crop: "
+
+[node name="InventoryContainer" type="VBoxContainer" parent="."]
+layout_direction = 3
+layout_mode = 0
+offset_left = -3.0
+offset_top = -1.0
+offset_right = 37.0
+offset_bottom = 39.0
+alignment = 2

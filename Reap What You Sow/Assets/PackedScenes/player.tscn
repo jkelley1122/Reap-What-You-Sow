@@ -1,9 +1,10 @@
-[gd_scene load_steps=26 format=3 uid="uid://gi5m7r10ckrb"]
+[gd_scene load_steps=27 format=3 uid="uid://gi5m7r10ckrb"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/Player/PlayerController.gd" id="1_gs0do"]
 [ext_resource type="Texture2D" uid="uid://bpljgopmj3tkg" path="res://Assets/Sprites/Characters/Player/SpriteMan_HoldingROD.png" id="2_2d7mk"]
 [ext_resource type="Script" path="res://Assets/Scripts/Farming/FarmPlotController.gd" id="3_ol46i"]
 [ext_resource type="PackedScene" uid="uid://dbbtcdgdjf42y" path="res://Assets/PackedScenes/PlantNode.tscn" id="4_ic4ba"]
+[ext_resource type="Script" path="res://Assets/Scripts/Player/Inventory.gd" id="5_1elxw"]
 [ext_resource type="PackedScene" uid="uid://bd7l4i2vouuvo" path="res://Assets/Scenes/Menu/Pause.tscn" id="5_g25wc"]
 [ext_resource type="PackedScene" uid="uid://bbm8gu12qqwku" path="res://Assets/Scenes/Menu/HUD.tscn" id="6_iw6kw"]
 
@@ -302,14 +303,17 @@ libraries = {
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_xgxeh")
 
-[node name="FarmPlot" type="Node3D" parent="."]
-script = ExtResource("3_ol46i")
-plant_node = ExtResource("4_ic4ba")
-
 [node name="Interact" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interact"]
 shape = SubResource("SphereShape3D_lgx15")
+
+[node name="FarmPlot" type="Node3D" parent="."]
+script = ExtResource("3_ol46i")
+plant_node = ExtResource("4_ic4ba")
+
+[node name="Inventory" type="Node3D" parent="."]
+script = ExtResource("5_1elxw")
 
 [node name="PauseMenu" parent="." instance=ExtResource("5_g25wc")]
 
