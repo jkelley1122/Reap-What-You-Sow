@@ -28,10 +28,3 @@ func _on_area_entered(area):
 	if player.is_in_group("player"):
 		player.position.x = -3.289
 		player.position.z = -0.991
-		stop_movement = true
-		set_process_input(false)
-		#player.texture = sprite
-	
-	
-		
-	

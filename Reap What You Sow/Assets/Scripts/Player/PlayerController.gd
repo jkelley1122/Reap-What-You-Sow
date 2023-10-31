@@ -159,11 +159,14 @@ func interact():
 			elif body.is_in_group("door"):
 				body._on_body_entered(self)
 				break
-			elif body.is_in_group("minigame"):
-				body._on_area_entered(self)
-				break
 		else:
 			break
+			
+	for body in area3D.get_overlapping_areas():
+		if !interacted:
+			if body.is_in_group("minigame"):
+				body._on_area_entered(self)
+				break
 	if !interacted:
 		if cur_item == "Sleeping bag":
 			is_sleeping = true
