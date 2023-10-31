@@ -5,7 +5,7 @@ extends Node3D
 @onready var player_stamina = 100.0
 @onready var player_sanity = 100.0
 @onready var player_money = 0.0
-@onready var player_crop = 'carrot'
+@onready var player_crop = 'broccoli'
 @onready var player_position = Vector3(0, 0.236, 0)
 @onready var time = [55, 23, 29, 3, 0]
 @onready var reputation = [100, 75, 50, 25]
