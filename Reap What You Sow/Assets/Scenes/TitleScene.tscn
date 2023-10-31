@@ -49,5 +49,5 @@ text = "Options
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
-[connection signal="pressed" from="Options" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Options" to="." method="_on_start_button_pressed"]

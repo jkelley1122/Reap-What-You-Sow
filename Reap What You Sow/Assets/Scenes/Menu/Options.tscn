@@ -87,8 +87,8 @@ texture = ExtResource("2_xntvg")
 
 [connection signal="pressed" from="Keybinds" to="Keybinds" method="_on_keybind_button_pressed"]
 [connection signal="popup_hide" from="Keybinds/Keybind_Popup" to="Keybinds" method="_on_keybind_popup_popup_hide"]
-[connection signal="pressed" from="Audio" to="Audio" method="_on_pressed"]
 [connection signal="pressed" from="Audio" to="Audio" method="_on_audio_button_pressed"]
+[connection signal="pressed" from="Audio" to="Audio" method="_on_pressed"]
 [connection signal="popup_hide" from="Audio/Audio_Popup" to="Keybinds" method="_on_keybind_popup_popup_hide"]
 [connection signal="pressed" from="Video" to="Video" method="_on_video_button_pressed"]
 [connection signal="popup_hide" from="Video/Video_Popup" to="Keybinds" method="_on_keybind_popup_popup_hide"]
