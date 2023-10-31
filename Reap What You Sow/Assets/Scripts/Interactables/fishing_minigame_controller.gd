@@ -26,5 +26,6 @@ func _process(delta):
 func _on_area_entered(area):
 	
 	if player.is_in_group("player"):
+		player.inventory.add_item("Fish", 1)
 		player.position.x = -3.289
 		player.position.z = -0.991

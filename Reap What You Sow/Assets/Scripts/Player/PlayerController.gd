@@ -26,6 +26,7 @@ var direction = 1
 # Interaction Variables
 @export var interaction_range : float = 2.0
 @onready var collision_shape = $Interact/CollisionShape3D
+var current_state = 0
 var is_sleeping = false;
 
 # Inventory Variables
@@ -48,7 +49,8 @@ var starting_items = {
 
 # FixedUpdate (_process() is Update)
 func _physics_process(delta):
-	get_movement(delta)
+	if current_state == 0:
+		get_movement(delta)
 	# move_and_slide is similar to Unity's 'CharacterController.Move()'.
 	move_and_slide()
 	
@@ -99,56 +101,56 @@ func get_movement(delta):
 	get_animation(velocity.length(), v, h)
 
 func get_animation(moving, v, h):
-	
-	if moving > 0:
-		if v < 0:
-			if h < 0:
-				animation_player.play("walk_FR")
-				direction = 6
-			elif h > 0:
-				animation_player.play("walk_FL")
-				direction = 5
+	if current_state == 0:
+		if moving > 0:
+			if v < 0:
+				if h < 0:
+					animation_player.play("walk_FR")
+					direction = 6
+				elif h > 0:
+					animation_player.play("walk_FL")
+					direction = 5
+				else:
+					animation_player.play("walk_forward")
+					direction = 1
+			elif v > 0:
+				if h < 0:
+					animation_player.play("walk_BR")
+					direction = 8
+				elif h > 0:
+					animation_player.play("walk_BL")
+					direction = 7
+				else:
+					animation_player.play("walk_back")
+					direction = 4
 			else:
-				animation_player.play("walk_forward")
-				direction = 1
-		elif v > 0:
-			if h < 0:
-				animation_player.play("walk_BR")
-				direction = 8
-			elif h > 0:
-				animation_player.play("walk_BL")
-				direction = 7
-			else:
-				animation_player.play("walk_back")
-				direction = 4
+				if h < 0:
+					animation_player.play("walk_right")
+					direction = 3
+				elif h > 0:
+					animation_player.play("walk_left")
+					direction = 2
 		else:
-			if h < 0:
-				animation_player.play("walk_right")
-				direction = 3
-			elif h > 0:
-				animation_player.play("walk_left")
-				direction = 2
-	else:
-		match direction:
-			1:
-				animation_player.play("idle_forward")
-			2:
-				animation_player.play("idle_left")
-			3:
-				animation_player.play("idle_right")
-			4:
-				animation_player.play("idle_back")
-			5:
-				animation_player.play("idle_FL")
-			6:
-				animation_player.play("idle_FR")
-			7:
-				animation_player.play("idle_BL")
-			8:
-				animation_player.play("idle_BR")
-			_:
-				animation_player.play("idle_forward")
-		
+			match direction:
+				1:
+					animation_player.play("idle_forward")
+				2:
+					animation_player.play("idle_left")
+				3:
+					animation_player.play("idle_right")
+				4:
+					animation_player.play("idle_back")
+				5:
+					animation_player.play("idle_FL")
+				6:
+					animation_player.play("idle_FR")
+				7:
+					animation_player.play("idle_BL")
+				8:
+					animation_player.play("idle_BR")
+				_:
+					animation_player.play("idle_forward")
+			
 func interact():
 	var interacted = false
 	for body in area3D.get_overlapping_bodies():
@@ -163,9 +165,14 @@ func interact():
 			break
 			
 	for body in area3D.get_overlapping_areas():
-		if !interacted:
+		if !interacted and current_state == 0 and cur_item == "Fishing Pole":
 			if body.is_in_group("minigame"):
+				current_state = 1
 				body._on_area_entered(self)
+				break
+		elif !interacted and current_state == 1 and cur_item == "Fishing Pole":
+			if body.is_in_group("minigame"):
+				current_state = 0
 				break
 	if !interacted:
 		if cur_item == "Sleeping bag":
