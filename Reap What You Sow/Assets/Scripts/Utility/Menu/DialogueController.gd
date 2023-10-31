@@ -10,6 +10,7 @@ var dialogue_sprite = null
 @onready var lbl_npc_name: Label = $PanelContainer/MarginContainer/VBoxContainer/CharacterName
 @onready var lbl_dialogue: Label = $PanelContainer/MarginContainer/VBoxContainer/Dialogue
 @onready var img_dialogue_sprite: TextureRect = $DialogueSprite
+
 func _input(event):
 	if not dialogue_end:
 		if event.is_action_released("ui_interact"):

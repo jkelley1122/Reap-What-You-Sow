@@ -1,9 +1,5 @@
 extends Area3D
 
-
-var charpath = "res://Assets/Sprites/Characters/Player/SpriteMan_HoldingROD.png"
-var sprite = load(charpath)
-
 @onready var player = get_tree().current_scene.get_node("Player")
 var stop_movement = false
 
@@ -23,8 +19,7 @@ func _process(delta):
 
 
 
-func _on_area_entered(area):
-	
+func setup_fishing(area):
 	if player.is_in_group("player"):
 		player.inventory.add_item("Fish", 1)
 		player.position.x = -3.289
