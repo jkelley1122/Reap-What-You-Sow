@@ -27,6 +27,12 @@ var direction = 1
 @export var interaction_range : float = 2.0
 @onready var collision_shape = $Interact/CollisionShape3D
 var current_state = 0
+#current state variable definitions:
+# 0 - Default
+# 1 - Fishing
+# 2 - other
+# 3 etc...
+#
 var is_sleeping = false;
 
 # Inventory Variables
@@ -172,13 +178,13 @@ func interact():
 		else:
 			break
 			
-	for body in area3D.get_overlapping_areas():
-		if !interacted and current_state == 0 and cur_item == "Fishing Pole":
+	for body in area3D.get_overlapping_areas(): #check for if the player is in the trigger area
+		if !interacted and current_state == 0 and cur_item == "Fishing Pole": #state change
 			if body.is_in_group("minigame"):
-				current_state = 1
+				current_state = 1 #state index 1 indicates a player is currently fishing
 				body.setup_fishing(self)
 				break
-		elif !interacted and current_state == 1 and cur_item == "Fishing Pole":
+		elif !interacted and current_state == 1 and cur_item == "Fishing Pole": #resets state to default
 			if body.is_in_group("minigame"):
 				current_state = 0
 				break

@@ -25,10 +25,10 @@ func update_display(seconds, minutes, days, months, years):
 	
 
 func update_inventory_ui():
-	var items = inventory.get_all_items()
+	var items = inventory.get_all_items() #gets all current items in inventory
 	
-	for child in inventory_ui_container.get_children():
-		child.queue_free()
+	for child in inventory_ui_container.get_children(): #prevents the inventory from duping itself on an outside -
+		child.queue_free()                              #inventory call
 
 	for item_name in items.keys():
 		var item_button = Button.new()
