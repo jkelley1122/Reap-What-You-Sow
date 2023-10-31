@@ -9,7 +9,7 @@ var corn = [#corn
 	load("res://Assets/Sprites/Crops/Corn/PlantCorn[STAGE3].png"),
 	load("res://Assets/Sprites/Crops/Corn/PlantCorn[STAGE4].png"),
 	load("res://Assets/Sprites/Crops/Corn/PlantCorn[STAGE5].png"),
-	load("res://Assets/Sprites/Crops/Corn/PlantCorn[PICKED].png")
+	load("res://Assets/Sprites/Crops/Corn/PlantCorn[DEAD].png")
 	]
 var carrot = [#carrots
 	load("res://Assets/Sprites/Crops/Carrot/PlantCarrot[STAGE1]_Sprite.png"),
@@ -17,7 +17,7 @@ var carrot = [#carrots
 	load("res://Assets/Sprites/Crops/Carrot/PlantCarrot[STAGE3]_Sprite.png"),
 	load("res://Assets/Sprites/Crops/Carrot/PlantCarrot[STAGE4]_Sprite.png"),
 	load("res://Assets/Sprites/Crops/Carrot/PlantCarrot[STAGE5]_Sprite.png"),
-	load("res://Assets/Sprites/Crops/Carrot/PlantCarrot[PICKED]_Sprite.png")
+	load("res://Assets/Sprites/Crops/Carrot/PlantCarrot[DEAD]_Sprite.png")
 ]
 var blackberry = [#blackberries
 	load("res://Assets/Sprites/Crops/Blackberry/PlantBlackberry[STAGE1].png"),
@@ -25,7 +25,7 @@ var blackberry = [#blackberries
 	load("res://Assets/Sprites/Crops/Blackberry/PlantBlackberry[STAGE3].png"),
 	load("res://Assets/Sprites/Crops/Blackberry/PlantBlackberry[STAGE4].png"),
 	load("res://Assets/Sprites/Crops/Blackberry/PlantBlackberry[STAGE5].png"),
-	load("res://Assets/Sprites/Crops/Blackberry/PlantBlackberry[PICKED].png"),
+	load("res://Assets/Sprites/Crops/Blackberry/PlantBlackberry[DEAD].png"),
 ]
 var raspberry = [#Raspberries
 	load("res://Assets/Sprites/Crops/Raspberry/PlantRaspberry[STAGE1].png"),
@@ -33,7 +33,7 @@ var raspberry = [#Raspberries
 	load("res://Assets/Sprites/Crops/Raspberry/PlantRaspberry[STAGE3].png"),
 	load("res://Assets/Sprites/Crops/Raspberry/PlantRaspberry[STAGE4].png"),
 	load("res://Assets/Sprites/Crops/Raspberry/PlantRaspberry[STAGE5].png"),
-	load("res://Assets/Sprites/Crops/Raspberry/PlantRaspberry[PICKED].png"),
+	load("res://Assets/Sprites/Crops/Raspberry/PlantRaspberry[DEAD].png"),
 	]
 	
 var tobacco = [#tobacco
@@ -42,7 +42,7 @@ var tobacco = [#tobacco
 	load("res://Assets/Sprites/Crops/Tobacco/PlantTobacco[STAGE3].png"),
 	load("res://Assets/Sprites/Crops/Tobacco/PlantTobacco[STAGE4].png"),
 	load("res://Assets/Sprites/Crops/Tobacco/PlantTobacco[STAGE5].png"),
-	load("res://Assets/Sprites/Crops/Tobacco/PlantTobacco[PICKED].png"),
+	load("res://Assets/Sprites/Crops/Tobacco/PlantTobacco[DEAD].png"),
 ]
 var broccoli = [#broccoli
 	load("res://Assets/Sprites/Crops/Broccoli/PlantBroccoli[STAGE1].png"),
@@ -50,9 +50,33 @@ var broccoli = [#broccoli
 	load("res://Assets/Sprites/Crops/Broccoli/PlantBroccoli[STAGE3].png"),
 	load("res://Assets/Sprites/Crops/Broccoli/PlantBroccoli[STAGE4].png"),
 	load("res://Assets/Sprites/Crops/Broccoli/PlantBroccoli[STAGE5].png"),
-	load("res://Assets/Sprites/Crops/Broccoli/PlantBroccoli[PICKED].png"),
+	load("res://Assets/Sprites/Crops/Broccoli/PlantBroccoli[DEAD].png"),
 ]
-var plants = [corn,carrot, blackberry, raspberry, tobacco, broccoli]
+var wheat = [#wheat
+	load("res://Assets/Sprites/Crops/Wheat/PlantWheat[STAGE1].png"),
+	load("res://Assets/Sprites/Crops/Wheat/PlantWheat[STAGE2].png"),
+	load("res://Assets/Sprites/Crops/Wheat/PlantWheat[STAGE3].png"),
+	load("res://Assets/Sprites/Crops/Wheat/PlantWheat[STAGE4].png"),
+	load("res://Assets/Sprites/Crops/Wheat/PlantWheat[STAGE5].png"),
+	load("res://Assets/Sprites/Crops/Wheat/PlantWheat[DEAD].png")
+]
+var tomato = [#tomatoes
+	load("res://Assets/Sprites/Crops/Tomato/PlantTomato[STAGE1].png"),
+	load("res://Assets/Sprites/Crops/Tomato/PlantTomato[STAGE2].png"),
+	load("res://Assets/Sprites/Crops/Tomato/PlantTomato[STAGE3].png"),
+	load("res://Assets/Sprites/Crops/Tomato/PlantTomato[STAGE4].png"),
+	load("res://Assets/Sprites/Crops/Tomato/PlantTomato[STAGE5].png"),
+	load("res://Assets/Sprites/Crops/Tomato/PlantTomato[DEAD].png")
+]
+var cauliflower = [#cauliflower
+	load("res://Assets/Sprites/Crops/Cauliflower/PlantCauliflower[STAGE1].png"),
+	load("res://Assets/Sprites/Crops/Cauliflower/PlantCauliflower[STAGE2].png"),
+	load("res://Assets/Sprites/Crops/Cauliflower/PlantCauliflower[STAGE3].png"),
+	load("res://Assets/Sprites/Crops/Cauliflower/PlantCauliflower[STAGE4].png"),
+	load("res://Assets/Sprites/Crops/Cauliflower/PlantCauliflower[STAGE5].png"),
+	load("res://Assets/Sprites/Crops/Cauliflower/PlantCauliflower[DEAD].png"),
+]
+var plants = [corn,carrot, blackberry, raspberry, tobacco, broccoli, wheat, tomato, cauliflower]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

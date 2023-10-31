@@ -10,7 +10,7 @@ var plants: Array = []
 
 func _ready():
 	croptype = 0
-	plants = ['Corn', 'Carrot', 'Blackberry', 'Raspberry', 'Tobacco', 'Broccoli']
+	plants = ['Corn', 'Carrot', 'Blackberry', 'Raspberry', 'Tobacco', 'Broccoli', 'Wheat', 'Tomato', 'Cauliflower']
 	
 func _process(delta):
 	# Detect user input (godot uses keybinds)
@@ -41,14 +41,26 @@ func def_plot():
 			if is_too_close(n.global_transform.origin, point):
 				valid = false
 				break
-
+			if does_overlap(n.global_transform.origin):
+				valid = false
 	if valid:
 		define_plot_space()
 
 # Checks the distance between two points to see if they are too close.
 func is_too_close(point1: Vector3, point2: Vector3) -> bool:
-	return point1.distance_to(point2) < 0.75
+	return point1.distance_to(point2) < 0.75 #initial version, allows placement of overlapping plots given suitable range from existing plots
 
+func does_overlap(point1: Vector3) -> bool:
+	var top = max(plot_points[0].z, plot_points[1].z)
+	var bot = min(plot_points[0].z, plot_points[1].z)
+	var left = min(plot_points[0].x, plot_points[1].x)
+	var right = max(plot_points[0].x, plot_points[1].x)
+	
+	if point1.z <= top + 0.75 and point1.z >= bot - 0.75 and point1.x <= right + 0.75 and point1.x >= left - 0.75:
+		return true
+		
+	else:
+		return false	
 func define_plot_space():
 	# Extract the start and end points for x and z.
 	var x_start = plot_points[0].x
