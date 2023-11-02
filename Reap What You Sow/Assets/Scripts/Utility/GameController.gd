@@ -14,13 +14,28 @@ extends Node3D
 	#2 - Days
 	#3 - Months
 	#4 - Years
-@onready var reputation = [100, 75, 50, 25, 15, 10]
+@onready var reputation = [100, 75, 50, 25, 15, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 	#0 - Rana
 	#1 - Hampton
 	#2 - Silas
 	#3 - Guinness
-	#4 - Sheriff
-	#5 - Iris
+	#4 - Iris
+	#5 - Sheriff
+	#6 - Deputy
+	#7 - Stakes
+	#8 - Dog
+	#9 - Blacksmith
+	#10 - Sage
+	#11 - Edith
+	#12 - Carpenter
+	#13 - Richard
+	#14 - Dante
+	#15 - Mary
+	#16 - BSDaughter
+	#17 - Tobias
+	#18 - Reuben
+	#19 - Cecilia
+	#20 - Vivian
 @onready var spawn_point = null
 
 # Timer

@@ -39,6 +39,10 @@ shadow_enabled = true
 
 [node name="NPCs" type="Node3D" parent="."]
 
+[node name="Dog" parent="NPCs" instance=ExtResource("2_3q6qw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00468922, 0.267678, 3.22439)
+npc_name = "Dog"
+
 [node name="Guiness" parent="NPCs" instance=ExtResource("2_3q6qw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.995051, 0.234428, 1.88615)
 npc_name = "Guinness"
@@ -61,3 +65,59 @@ npc_name = "Iris"
 [node name="Silas" parent="NPCs" instance=ExtResource("2_3q6qw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.04496, 0.234428, 1.88679)
 npc_name = "Silas"
+
+[node name="Deputy" parent="NPCs" instance=ExtResource("2_3q6qw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.09166, 0.261646, 0.677075)
+npc_name = "Deputy"
+
+[node name="Stakes" parent="NPCs" instance=ExtResource("2_3q6qw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.04626, 0.250002, 0.58475)
+npc_name = "Stakes"
+
+[node name="Blacksmith" parent="NPCs" instance=ExtResource("2_3q6qw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.97959, 0.258541, -0.614149)
+npc_name = "Blacksmith"
+
+[node name="Sage" parent="NPCs" instance=ExtResource("2_3q6qw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.99609, 0.258541, -0.61188)
+npc_name = "Sage"
+
+[node name="Edith" parent="NPCs" instance=ExtResource("2_3q6qw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.99609, 0.258541, -1.85363)
+npc_name = "Edith"
+
+[node name="Carpenter" parent="NPCs" instance=ExtResource("2_3q6qw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.04149, 0.246897, -0.5385)
+npc_name = "Carpenter"
+
+[node name="Richard" parent="NPCs" instance=ExtResource("2_3q6qw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.04149, 0.246897, -1.94596)
+npc_name = "Richard"
+
+[node name="Dante" parent="NPCs" instance=ExtResource("2_3q6qw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0295, 0.258541, -0.613509)
+npc_name = "Dante"
+
+[node name="Mary" parent="NPCs" instance=ExtResource("2_3q6qw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0762, 0.285758, -1.82322)
+npc_name = "Mary"
+
+[node name="Tobias" parent="NPCs" instance=ExtResource("2_3q6qw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0308, 0.274114, -1.91555)
+npc_name = "Tobias"
+
+[node name="Cecilia" parent="NPCs" instance=ExtResource("2_3q6qw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.07836, 0.216481, -3.10016)
+npc_name = "Cecilia"
+
+[node name="Reuben" parent="NPCs" instance=ExtResource("2_3q6qw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.12376, 0.204837, -3.19248)
+npc_name = "Reuben"
+
+[node name="BSDaughter" parent="NPCs" instance=ExtResource("2_3q6qw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.99394, 0.243699, -3.06975)
+npc_name = "BSDaughter"
+
+[node name="Vivian" parent="NPCs" instance=ExtResource("2_3q6qw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.948534, 0.232055, -3.16208)
+npc_name = "Vivian"
