@@ -56,5 +56,6 @@ shadow_enabled = true
 
 [node name="NPCs" type="Node3D" parent="."]
 
-[node name="Rana" parent="NPCs" instance=ExtResource("8_fo30i")]
+[node name="Edith" parent="NPCs" instance=ExtResource("8_fo30i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03408, 0.222784, 0.956202)
+npc_name = "Edith"

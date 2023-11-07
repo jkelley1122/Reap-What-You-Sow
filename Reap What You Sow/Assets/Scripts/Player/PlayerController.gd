@@ -59,11 +59,10 @@ func _physics_process(delta):
 	# move_and_slide is similar to Unity's 'CharacterController.Move()'.
 	move_and_slide()
 	
+	
 func _input(event):
 	if event.is_action_pressed("ui_interact"):
 		interact()
-	if event.is_action_pressed("debug_lose_sanity"):
-		sanity -= 5
 	if event.is_action_pressed("debug_gain_sanity"):
 		sanity += 5
 	GameController.player_sanity = sanity
@@ -163,7 +162,26 @@ func get_animation(moving, v, h):
 				_:
 					animation_player.play("idle_forward")
 	else:
-		animation_player.play("fish_forward")
+		match direction:
+				1:
+					animation_player.play("fish_forward") ###CHANGE THESE LATER###
+				2:
+					animation_player.play("fish_forward") #fish_left
+				3:
+					animation_player.play("fish_forward") #fish_right
+				4:
+					animation_player.play("fish_forward") #fish_back
+				5:
+					animation_player.play("fish_forward") #fish_fl
+				6:
+					animation_player.play("fish_forward") #fish_fr
+				7:
+					animation_player.play("fish_forward") #fish_bl
+				8:
+					animation_player.play("fish_forward") #fish_br
+				_:
+					animation_player.play("fish_forward") ###CHANGE THESE LATER###
+		
 		
 func interact():
 	var interacted = false

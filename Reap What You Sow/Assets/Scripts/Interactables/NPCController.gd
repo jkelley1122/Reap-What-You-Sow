@@ -80,6 +80,7 @@ func _ready():
 			reputation = GameController.reputation[20]
 			
 	$Sprite3D.texture = sprite
+	
 func talk():
 	if (dialogue_menu.has_method("start_dialogue")):
 		dialogue_menu.start_dialogue(npc_name, reputation, dialoguepath)

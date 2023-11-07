@@ -307,7 +307,7 @@ texture_filter = 0
 texture = ExtResource("2_rxayx")
 hframes = 7
 vframes = 9
-frame = 56
+frame = 36
 
 [node name="PlayerAnimation" type="AnimationPlayer" parent="Sprite3D"]
 root_node = NodePath("../..")
