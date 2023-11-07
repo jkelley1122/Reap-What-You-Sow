@@ -1,0 +1,247 @@
+[gd_scene load_steps=2 format=3 uid="uid://ug4g3x77o7x5"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/Utility/Menu/Option_Controller.gd" id="1_wfdot"]
+
+[node name="Options" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Keybinds" type="Button" parent="."]
+layout_mode = 0
+offset_left = 81.0
+offset_top = 88.0
+offset_right = 213.0
+offset_bottom = 134.0
+text = "Key Bindings"
+script = ExtResource("1_wfdot")
+
+[node name="Audio" type="Button" parent="."]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 144.0
+offset_right = 212.0
+offset_bottom = 190.0
+text = "Audio"
+script = ExtResource("1_wfdot")
+
+[node name="Audio_Popup" type="Popup" parent="Audio"]
+title = "Audio"
+position = Vector2i(350, 100)
+size = Vector2i(500, 500)
+borderless = false
+
+[node name="Video" type="Button" parent="."]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 200.0
+offset_right = 212.0
+offset_bottom = 246.0
+text = "Video"
+script = ExtResource("1_wfdot")
+
+[node name="Video_Popup" type="Popup" parent="Video"]
+title = "Video"
+position = Vector2i(350, 100)
+size = Vector2i(500, 500)
+borderless = false
+
+[node name="Display" type="Button" parent="."]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 256.0
+offset_right = 212.0
+offset_bottom = 302.0
+text = "Display"
+script = ExtResource("1_wfdot")
+
+[node name="Display_Popup" type="Popup" parent="Display"]
+title = "Display"
+position = Vector2i(350, 100)
+size = Vector2i(500, 500)
+borderless = false
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 456.0
+offset_right = 212.0
+offset_bottom = 502.0
+text = "Back"
+script = ExtResource("1_wfdot")
+
+[node name="Keybind_Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 236.0
+offset_top = 89.0
+offset_right = 839.0
+offset_bottom = 502.0
+
+[node name="Movement_Section_Header" type="RichTextLabel" parent="Keybind_Panel"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 13.0
+offset_right = 587.0
+offset_bottom = 205.0
+text = "MOVEMENT"
+
+[node name="Up" type="RichTextLabel" parent="Keybind_Panel/Movement_Section_Header"]
+layout_mode = 0
+offset_top = 37.0
+offset_right = 469.0
+offset_bottom = 77.0
+text = "Move UP:"
+
+[node name="default_up" type="Button" parent="Keybind_Panel/Movement_Section_Header/Up"]
+layout_mode = 0
+offset_left = 148.0
+offset_top = -6.0
+offset_right = 226.0
+offset_bottom = 25.0
+text = "UpArrow"
+
+[node name="default_up2" type="Button" parent="Keybind_Panel/Movement_Section_Header/Up"]
+offset_left = 377.0
+offset_top = -3.0
+offset_right = 455.0
+offset_bottom = 28.0
+text = "W"
+
+[node name="Down" type="RichTextLabel" parent="Keybind_Panel/Movement_Section_Header"]
+offset_left = 1.0
+offset_top = 58.0
+offset_right = 493.0
+offset_bottom = 114.0
+text = "
+Move DOWN:"
+fit_content = true
+scroll_active = false
+
+[node name="default_down" type="Button" parent="Keybind_Panel/Movement_Section_Header/Down"]
+offset_left = 140.0
+offset_top = 19.0
+offset_right = 218.0
+offset_bottom = 50.0
+text = "DownArrow"
+
+[node name="default_down" type="Button" parent="Keybind_Panel/Movement_Section_Header/Down/default_down"]
+offset_left = 234.0
+offset_top = -3.0
+offset_right = 314.0
+offset_bottom = 28.0
+text = "S"
+
+[node name="Left" type="RichTextLabel" parent="Keybind_Panel/Movement_Section_Header"]
+offset_left = 3.0
+offset_top = 123.0
+offset_right = 531.0
+offset_bottom = 163.0
+text = "Move LEFT:"
+
+[node name="default_left" type="Button" parent="Keybind_Panel/Movement_Section_Header/Left"]
+offset_left = 143.0
+offset_top = -3.0
+offset_right = 229.0
+offset_bottom = 28.0
+text = "LeftArrow"
+
+[node name="default_left" type="Button" parent="Keybind_Panel/Movement_Section_Header/Left/default_left"]
+offset_left = 229.0
+offset_top = 2.0
+offset_right = 309.0
+offset_bottom = 33.0
+text = "A"
+
+[node name="Right" type="RichTextLabel" parent="Keybind_Panel/Movement_Section_Header"]
+offset_left = 2.0
+offset_top = 164.0
+offset_right = 530.0
+offset_bottom = 210.0
+text = "Move RIGHT"
+
+[node name="default_right" type="Button" parent="Keybind_Panel/Movement_Section_Header/Right"]
+offset_left = 139.0
+offset_top = 2.0
+offset_right = 235.0
+offset_bottom = 33.0
+text = "RIghtArrow"
+
+[node name="default_right" type="Button" parent="Keybind_Panel/Movement_Section_Header/Right/default_right"]
+offset_left = 234.0
+offset_top = -4.0
+offset_right = 314.0
+offset_bottom = 27.0
+text = "D"
+
+[node name="Interaction" type="RichTextLabel" parent="Keybind_Panel"]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 250.0
+offset_right = 580.0
+offset_bottom = 387.0
+text = "INTERACTION"
+
+[node name="Interact" type="RichTextLabel" parent="Keybind_Panel/Interaction"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 35.0
+offset_right = 544.0
+offset_bottom = 75.0
+text = "Interact:"
+
+[node name="default_e" type="Button" parent="Keybind_Panel/Interaction/Interact"]
+offset_left = 154.0
+offset_top = -6.0
+offset_right = 232.0
+offset_bottom = 25.0
+text = "E"
+
+[node name="default_e" type="Button" parent="Keybind_Panel/Interaction/Interact/default_e"]
+offset_left = 224.0
+offset_top = -8.0
+offset_right = 302.0
+offset_bottom = 31.0
+text = "<Select>"
+
+[node name="Lay Plot" type="RichTextLabel" parent="Keybind_Panel/Interaction"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 79.0
+offset_right = 555.0
+offset_bottom = 124.0
+text = "Lay Plot:"
+
+[node name="default_space" type="Button" parent="Keybind_Panel/Interaction/Lay Plot"]
+offset_left = 150.0
+offset_top = 4.0
+offset_right = 224.0
+offset_bottom = 35.0
+text = "SPACE"
+
+[node name="default_e" type="Button" parent="Keybind_Panel/Interaction/Lay Plot"]
+offset_left = 376.0
+offset_top = -2.0
+offset_right = 454.0
+offset_bottom = 37.0
+text = "<Select>"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Keybind_Panel"]
+layout_mode = 0
+offset_left = 163.0
+offset_top = 6.0
+offset_right = 580.0
+offset_bottom = 46.0
+text = "    PRIMARY                                    SECONDARY"
+
+[connection signal="pressed" from="Keybinds" to="Keybinds" method="_on_keybind_button_pressed"]
+[connection signal="pressed" from="Audio" to="Audio" method="_on_audio_button_pressed"]
+[connection signal="pressed" from="Audio" to="Audio" method="_on_pressed"]
+[connection signal="popup_hide" from="Audio/Audio_Popup" to="Keybinds" method="_on_keybind_popup_popup_hide"]
+[connection signal="pressed" from="Video" to="Video" method="_on_video_button_pressed"]
+[connection signal="popup_hide" from="Video/Video_Popup" to="Keybinds" method="_on_keybind_popup_popup_hide"]
+[connection signal="pressed" from="Display" to="Display" method="_on_display_button_pressed"]
+[connection signal="popup_hide" from="Display/Display_Popup" to="Keybinds" method="_on_keybind_popup_popup_hide"]
+[connection signal="pressed" from="Back" to="Back" method="_on_back_button_pressed"]

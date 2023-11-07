@@ -11,7 +11,7 @@ func _process(delta):
 	pass
 
 func _on_keybind_button_pressed():
-	$Keybind_Popup.visible = true
+	get_tree().change_scene_to_file("res://Assets/Scenes/Menu/Keybinds.tscn")
 func _on_audio_button_pressed():
 	$Audio_Popup.visible = true
 func _on_video_button_pressed():
