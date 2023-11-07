@@ -7,10 +7,14 @@ extends Node3D
 var croptype
 var plot_points: Array = []
 var plants: Array = []
-
+var inventory
+@onready var current_scene = get_tree().current_scene
+@onready var HUD = get_tree().current_scene.get_node("Player").get_node("HUD")
 func _ready():
 	croptype = 0
-	plants = ['Corn', 'Carrot', 'Blackberry', 'Raspberry', 'Tobacco', 'Broccoli', 'Wheat', 'Tomato', 'Cauliflower']
+	plants = ['Corn Seeds', 'Carrot Seeds', 'Blackberry Seeds', 'Raspberry Seeds', 'Tobacco Seeds', 'Broccoli Seeds', 'Wheat Seeds', 'Tomato Seeds', 'Cauliflower Seeds']
+	
+	inventory = current_scene.get_node("Player").get_node("Inventory")
 	
 func _process(delta):
 	# Detect user input (godot uses keybinds)
@@ -79,9 +83,15 @@ func define_plot_space():
 		while (z_step > 0 and z <= z_end) or (z_step < 0 and z >= z_end):
 			# Instantiate a new plant node.
 			# This is equivalent to Unity's Instantiate function.
-			var new_plant = plant_node.instantiate()
-			get_tree().current_scene.add_child(new_plant)
-			new_plant.global_transform.origin = Vector3(x, 0.05, z)
-			new_plant.find_child('Sprite3D').crop = croptype ############### New WIP shit #####################
+			if inventory.has_item(plants[croptype], 1):
+				var new_plant = plant_node.instantiate()
+				get_tree().current_scene.add_child(new_plant)
+				new_plant.global_transform.origin = Vector3(x, 0.05, z)
+				new_plant.find_child('Sprite3D').crop = croptype ############### New WIP shit #####################
+				inventory.remove_item(plants[croptype], 1)
+				HUD.update_inventory_ui()
+			else:
+				print("Not enough Seeds")
+				break
 			z += z_step
 		x += x_step
