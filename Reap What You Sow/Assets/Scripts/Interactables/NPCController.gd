@@ -4,7 +4,6 @@ extends CharacterBody3D
 var reputation = 100
 
 @onready var dialogue_menu = $DialogueMenu
-@onready var animator: AnimationPlayer = $DialogueMenu/AnimationPlayer
 
 var charpath = "res://Assets/Sprites/Characters/"
 var dialoguepath = null

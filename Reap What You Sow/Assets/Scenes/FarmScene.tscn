@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bb7ywxi0s1ep7"]
+[gd_scene load_steps=17 format=3 uid="uid://bb7ywxi0s1ep7"]
 
 [ext_resource type="PackedScene" uid="uid://gi5m7r10ckrb" path="res://Assets/PackedScenes/player.tscn" id="1_xv6ju"]
 [ext_resource type="PackedScene" uid="uid://dbo656wlewfct" path="res://Assets/Models/TestPlayerFarm.glb" id="3_wl5jr"]
@@ -6,6 +6,11 @@
 [ext_resource type="Script" path="res://Assets/Scripts/Utility/CameraController.gd" id="5_g2s2n"]
 [ext_resource type="Script" path="res://Assets/Scripts/Utility/AreaChange.gd" id="5_uh8jm"]
 [ext_resource type="PackedScene" uid="uid://mhqv0dhfoovh" path="res://Assets/Models/TestHouse.glb" id="6_j6wjd"]
+[ext_resource type="AudioStream" uid="uid://fjaue26ntsih" path="res://Assets/Sounds/Music/gametheme.mp3" id="7_nrg5e"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_tsum4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e0e3i"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jl0yc"]
 size = Vector3(1.82616, 1.68358, 1.8341)
@@ -15,6 +20,18 @@ size = Vector3(0.356405, 0.367621, 0.112553)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4wl0f"]
 size = Vector3(0.375876, 1, 0.930322)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_grn5h"]
+size = Vector3(1, 14.3544, 12.722)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kphm8"]
+size = Vector3(1, 14.0517, 14.0772)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hylhv"]
+size = Vector3(15.7838, 14.2205, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0tugr"]
+size = Vector3(14.6574, 16.5583, 1)
 
 [node name="FarmScene" type="Node3D"]
 
@@ -29,6 +46,18 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 [node name="TestHouse" parent="Environment" instance=ExtResource("6_j6wjd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.93507, 0.553104, -3.78442)
 skeleton = NodePath("../../..")
+
+[node name="Door" type="MeshInstance3D" parent="Environment/TestHouse"]
+transform = Transform3D(0.408083, 0, 0, 0, 0.532366, 0, 0, 0, 0.0751534, -0.0410789, -0.288548, 0.927268)
+mesh = SubResource("BoxMesh_tsum4")
+skeleton = NodePath("../../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/TestHouse/Door" groups=["door"]]
+script = ExtResource("5_uh8jm")
+scene_to_load = "FarmHouseScene"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/TestHouse/Door/StaticBody3D"]
+shape = SubResource("BoxShape3D_e0e3i")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Environment/TestHouse"]
 
@@ -61,6 +90,9 @@ shape = SubResource("BoxShape3D_4wl0f")
 [node name="FromTown" type="Marker3D" parent="Spawns"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.16, 0.236, -1.88529)
 
+[node name="FromFarmHouse" type="Marker3D" parent="Spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.92428, 0.236, -2.23731)
+
 [node name="Utility" type="Node3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="Utility" node_paths=PackedStringArray("player")]
@@ -76,6 +108,27 @@ transform = Transform3D(-0.5, -0.612372, 0.612373, 0, 0.707107, 0.707106, -0.866
 light_color = Color(0.976471, 0.996078, 1, 1)
 light_energy = 1.561
 shadow_enabled = true
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="Utility"]
+stream = ExtResource("7_nrg5e")
+
+[node name="Invisible Walls" type="StaticBody3D" parent="Utility"]
+
+[node name="LeftBorder" type="CollisionShape3D" parent="Utility/Invisible Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.40845, 0, 0)
+shape = SubResource("BoxShape3D_grn5h")
+
+[node name="RightBorder" type="CollisionShape3D" parent="Utility/Invisible Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.65229, 0, 0)
+shape = SubResource("BoxShape3D_kphm8")
+
+[node name="BackBorder" type="CollisionShape3D" parent="Utility/Invisible Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.5914)
+shape = SubResource("BoxShape3D_hylhv")
+
+[node name="FrontBorder" type="CollisionShape3D" parent="Utility/Invisible Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.61112)
+shape = SubResource("BoxShape3D_0tugr")
 
 [node name="NPCs" type="Node3D" parent="."]
 

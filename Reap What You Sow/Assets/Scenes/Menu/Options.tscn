@@ -81,14 +81,20 @@ text = "Back"
 script = ExtResource("1_dm6as")
 
 [node name="SalmonFishSprite" type="Sprite2D" parent="."]
-position = Vector2(576, 328)
-scale = Vector2(17.125, 15.125)
+position = Vector2(144, 377)
+scale = Vector2(3.40625, 3.00844)
 texture = ExtResource("2_xntvg")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "No Settings have been implemented yet"
 
 [connection signal="pressed" from="Keybinds" to="Keybinds" method="_on_keybind_button_pressed"]
 [connection signal="popup_hide" from="Keybinds/Keybind_Popup" to="Keybinds" method="_on_keybind_popup_popup_hide"]
-[connection signal="pressed" from="Audio" to="Audio" method="_on_pressed"]
 [connection signal="pressed" from="Audio" to="Audio" method="_on_audio_button_pressed"]
+[connection signal="pressed" from="Audio" to="Audio" method="_on_pressed"]
 [connection signal="popup_hide" from="Audio/Audio_Popup" to="Keybinds" method="_on_keybind_popup_popup_hide"]
 [connection signal="pressed" from="Video" to="Video" method="_on_video_button_pressed"]
 [connection signal="popup_hide" from="Video/Video_Popup" to="Keybinds" method="_on_keybind_popup_popup_hide"]

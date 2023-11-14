@@ -1,6 +1,5 @@
-extends ColorRect
+extends CanvasLayer
 
-@onready var animator: AnimationPlayer = $AnimationPlayer
 @onready var resume_button: Button = find_child("ResumeButton")
 @onready var menu_button: Button = find_child("MenuButton")
 
@@ -10,18 +9,22 @@ func _input(event: InputEvent) -> void:
 			resume()
 		else:
 			pause()
+	pass
 
 func _ready() -> void:
+	hide()
 	resume_button.pressed.connect(resume)
 	menu_button.pressed.connect(back_to_menu)
 
 func resume():
-	animator.play("Unpause")
+	hide()
 	get_tree().paused = false
 
+
 func pause():
-	animator.play("Pause")
+	show()
 	get_tree().paused = true
+
 	
 func back_to_menu():
 	resume()

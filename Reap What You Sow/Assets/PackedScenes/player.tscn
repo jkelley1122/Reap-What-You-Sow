@@ -1,7 +1,8 @@
-[gd_scene load_steps=28 format=3 uid="uid://gi5m7r10ckrb"]
+[gd_scene load_steps=29 format=3 uid="uid://gi5m7r10ckrb"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/Player/PlayerController.gd" id="1_gs0do"]
-[ext_resource type="Texture2D" uid="uid://bm4vvdknlbfto" path="res://Assets/Sprites/Characters/Player/TestPlayerSheet.png" id="2_rxayx"]
+[ext_resource type="Texture2D" uid="uid://cpcnfq7io1hek" path="res://Assets/Sprites/Characters/Player/PlayerSheet.png" id="2_1p5mk"]
+[ext_resource type="Texture2D" uid="uid://bg5c7y4whi1pf" path="res://Assets/Sprites/Utility/Buttons/spr_key_e.png" id="3_nsgvx"]
 [ext_resource type="Script" path="res://Assets/Scripts/Farming/FarmPlotController.gd" id="3_ol46i"]
 [ext_resource type="PackedScene" uid="uid://dbbtcdgdjf42y" path="res://Assets/PackedScenes/PlantNode.tscn" id="4_ic4ba"]
 [ext_resource type="Script" path="res://Assets/Scripts/Player/Inventory.gd" id="5_1elxw"]
@@ -304,10 +305,10 @@ script = ExtResource("1_gs0do")
 [node name="Sprite3D" type="Sprite3D" parent="."]
 billboard = 1
 texture_filter = 0
-texture = ExtResource("2_rxayx")
+texture = ExtResource("2_1p5mk")
 hframes = 7
-vframes = 9
-frame = 36
+vframes = 10
+frame = 56
 
 [node name="PlayerAnimation" type="AnimationPlayer" parent="Sprite3D"]
 root_node = NodePath("../..")
@@ -319,6 +320,13 @@ libraries = {
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_xgxeh")
 
+[node name="InputSprite" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.436, 0)
+visible = false
+billboard = 1
+texture_filter = 0
+texture = ExtResource("3_nsgvx")
+
 [node name="Interact" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interact"]
@@ -329,6 +337,9 @@ script = ExtResource("3_ol46i")
 plant_node = ExtResource("4_ic4ba")
 
 [node name="Inventory" type="Node3D" parent="."]
+script = ExtResource("5_1elxw")
+
+[node name="SeedsPouch" type="Node3D" parent="."]
 script = ExtResource("5_1elxw")
 
 [node name="PauseMenu" parent="." instance=ExtResource("5_g25wc")]

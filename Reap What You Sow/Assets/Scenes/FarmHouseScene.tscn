@@ -1,0 +1,97 @@
+[gd_scene load_steps=12 format=3 uid="uid://dl8dhcw6q4hqd"]
+
+[ext_resource type="PackedScene" uid="uid://gi5m7r10ckrb" path="res://Assets/PackedScenes/player.tscn" id="1_khf36"]
+[ext_resource type="PackedScene" uid="uid://3457a5so8lew" path="res://Assets/Models/TestChurch.glb" id="2_wpowh"]
+[ext_resource type="Script" path="res://Assets/Scripts/Utility/AreaChange.gd" id="3_yvgr6"]
+[ext_resource type="Script" path="res://Assets/Scripts/Interactables/ShopController.gd" id="4_2vi4l"]
+[ext_resource type="Script" path="res://Assets/Scripts/Utility/CameraController.gd" id="5_dmkjy"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_0bb8y"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7kg4h"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6b5fj"]
+size = Vector3(1, 14.3544, 12.722)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_milyj"]
+size = Vector3(1, 14.0517, 14.0772)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_10dga"]
+size = Vector3(15.7838, 14.2205, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c0gfr"]
+size = Vector3(14.6574, 16.5583, 1)
+
+[node name="FarmHouseScene" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_khf36")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.236, 0)
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="TestMarket" parent="Environment" instance=ExtResource("2_wpowh")]
+skeleton = NodePath("../..")
+
+[node name="Door" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(0.408083, 0, 0, 0, 0.532366, 0, 0, 0, 0.0751534, 0.0143816, 0.264556, 5.19076)
+mesh = SubResource("BoxMesh_0bb8y")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Door" groups=["door"]]
+script = ExtResource("3_yvgr6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Door/StaticBody3D"]
+shape = SubResource("BoxShape3D_7kg4h")
+
+[node name="Bed" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(0.507717, 0, 0, 0, 0.143192, 0, 0, 0, 1.2356, -1.55074, 0.0720665, 2.13911)
+mesh = SubResource("BoxMesh_0bb8y")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Bed" groups=["Bed"]]
+script = ExtResource("4_2vi4l")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Bed/StaticBody3D"]
+shape = SubResource("BoxShape3D_7kg4h")
+
+[node name="Spawns" type="Node3D" parent="."]
+
+[node name="FromFarm" type="Marker3D" parent="Spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.236, 4.16)
+
+[node name="Utility" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Utility" node_paths=PackedStringArray("player")]
+transform = Transform3D(0.707107, -0.353553, 0.612373, 0, 0.866026, 0.5, -0.707107, -0.353553, 0.612373, 5.333, 4.715, 5.424)
+projection = 1
+current = true
+size = 3.0
+script = ExtResource("5_dmkjy")
+player = NodePath("../../Player")
+offset = Vector3(5.333, 4.715, 5.424)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Utility"]
+transform = Transform3D(-0.5, -0.612372, 0.612373, 0, 0.707107, 0.707106, -0.866025, 0.353553, -0.353554, 0, 5.33816, 0)
+light_color = Color(0.976471, 0.996078, 1, 1)
+light_energy = 1.561
+shadow_enabled = true
+
+[node name="Invisible Walls" type="StaticBody3D" parent="Utility"]
+
+[node name="LeftBorder" type="CollisionShape3D" parent="Utility/Invisible Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.40845, 0, 0)
+shape = SubResource("BoxShape3D_6b5fj")
+
+[node name="RightBorder" type="CollisionShape3D" parent="Utility/Invisible Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.65229, 0, 0)
+shape = SubResource("BoxShape3D_milyj")
+
+[node name="BackBorder" type="CollisionShape3D" parent="Utility/Invisible Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.5914)
+shape = SubResource("BoxShape3D_10dga")
+
+[node name="FrontBorder" type="CollisionShape3D" parent="Utility/Invisible Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.61112)
+shape = SubResource("BoxShape3D_c0gfr")
+
+[node name="NPCs" type="Node3D" parent="."]

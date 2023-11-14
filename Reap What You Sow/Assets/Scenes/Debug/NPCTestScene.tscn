@@ -9,7 +9,6 @@
 
 [node name="Player" parent="." instance=ExtResource("1_6502b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.236, 0)
-interaction_range = 0.5
 
 [node name="Environment" type="Node3D" parent="."]
 

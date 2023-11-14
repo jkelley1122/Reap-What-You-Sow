@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://deg3v4mbyotiu"]
+[gd_scene load_steps=16 format=3 uid="uid://deg3v4mbyotiu"]
 
 [ext_resource type="PackedScene" uid="uid://gi5m7r10ckrb" path="res://Assets/PackedScenes/player.tscn" id="1_fggio"]
 [ext_resource type="PackedScene" uid="uid://cbis485v8pvsd" path="res://Assets/Models/TestRiver.glb" id="3_qrl4g"]
 [ext_resource type="PackedScene" uid="uid://en8siof2j1ei" path="res://Assets/Models/TestSign.glb" id="4_cau6t"]
 [ext_resource type="Script" path="res://Assets/Scripts/Utility/AreaChange.gd" id="5_7tqre"]
 [ext_resource type="Script" path="res://Assets/Scripts/Interactables/fishing_minigame_controller.gd" id="5_pn741"]
+[ext_resource type="PackedScene" uid="uid://ipqlxbyvi27p" path="res://Assets/PackedScenes/npc.tscn" id="6_asvn4"]
 [ext_resource type="Script" path="res://Assets/Scripts/Utility/CameraController.gd" id="6_jbptj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mke1h"]
@@ -13,7 +14,28 @@ size = Vector3(0.356405, 0.367621, 0.112553)
 [sub_resource type="BoxShape3D" id="BoxShape3D_4wl0f"]
 size = Vector3(0.375876, 1, 0.930322)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_vivhk"]
+size = Vector3(10.6405, 0.222121, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jj8sa"]
+size = Vector3(10.3454, 2.45424, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qfgy6"]
+size = Vector3(1, 14.3544, 12.722)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jqc8n"]
+size = Vector3(1, 14.0517, 14.0772)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8klau"]
+size = Vector3(15.7838, 14.2205, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k2exp"]
+size = Vector3(14.6574, 16.5583, 1)
+
 [node name="RiverScene" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_fggio")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0117293, 0.269957, -2.85915)
 
 [node name="Environment" type="Node3D" parent="."]
 
@@ -41,12 +63,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0109091, 0, 0.00553322)
 shape = SubResource("BoxShape3D_4wl0f")
 
 [node name="FishingTrigger" type="Area3D" parent="Triggers" groups=["minigame"]]
-transform = Transform3D(3.24722, 0, 0, 0, 1, 0, 0, 0, 1, -0.185877, 0.0920434, -0.991258)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.185877, 0.0920434, -0.991258)
 script = ExtResource("5_pn741")
 
 [node name="fishing_collider" type="CollisionShape3D" parent="Triggers/FishingTrigger"]
-transform = Transform3D(-4.37114e-08, 0, 3.04728, -0.999963, 0.008552, -1.33196e-07, -0.008552, -0.999963, -1.13913e-09, 0.0368102, 0.209813, 0.00636673)
-shape = SubResource("BoxShape3D_4wl0f")
+shape = SubResource("BoxShape3D_vivhk")
 
 [node name="Spawns" type="Node3D" parent="."]
 
@@ -56,7 +77,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.236, -4.16)
 [node name="Utility" type="Node3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="Utility" node_paths=PackedStringArray("player")]
-transform = Transform3D(0.707107, -0.353553, 0.612373, 0, 0.866026, 0.5, -0.707107, -0.353553, 0.612373, 5.333, 4.715, 5.424)
+transform = Transform3D(0.707107, -0.353553, 0.612373, 0, 0.866026, 0.499999, -0.707107, -0.353553, 0.612373, 5.333, 4.715, 5.424)
 projection = 1
 size = 3.0
 script = ExtResource("6_jbptj")
@@ -69,10 +90,33 @@ light_color = Color(0.976471, 0.996078, 1, 1)
 light_energy = 1.561
 shadow_enabled = true
 
+[node name="Invisible Walls" type="StaticBody3D" parent="Utility"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Utility/Invisible Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22293, 0)
+shape = SubResource("BoxShape3D_jj8sa")
+
+[node name="LeftBorder" type="CollisionShape3D" parent="Utility/Invisible Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.40845, 0, 0)
+shape = SubResource("BoxShape3D_qfgy6")
+
+[node name="RightBorder" type="CollisionShape3D" parent="Utility/Invisible Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.65229, 0, 0)
+shape = SubResource("BoxShape3D_jqc8n")
+
+[node name="BackBorder" type="CollisionShape3D" parent="Utility/Invisible Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.5914)
+shape = SubResource("BoxShape3D_8klau")
+
+[node name="FrontBorder" type="CollisionShape3D" parent="Utility/Invisible Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.61112)
+shape = SubResource("BoxShape3D_k2exp")
+
 [node name="NPCs" type="Node3D" parent="."]
 
-[node name="Player" parent="." instance=ExtResource("1_fggio")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.236, -2.70327)
+[node name="Iris" parent="NPCs" instance=ExtResource("6_asvn4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.64299, 0.222784, -3.48357)
+npc_name = "Iris"
 
 [connection signal="body_entered" from="Triggers/ToTown" to="Triggers/ToTown" method="_on_body_entered"]
 [connection signal="area_entered" from="Triggers/FishingTrigger" to="Triggers/FishingTrigger" method="_on_area_entered"]
