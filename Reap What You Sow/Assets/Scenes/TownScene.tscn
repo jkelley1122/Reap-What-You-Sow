@@ -1,6 +1,5 @@
-[gd_scene load_steps=14 format=3 uid="uid://cyr50f2l25kg5"]
+[gd_scene load_steps=17 format=3 uid="uid://b6a1kbpkxx87m"]
 
-[ext_resource type="Script" path="res://Assets/Scripts/Utility/GameController.gd" id="1_fgrup"]
 [ext_resource type="PackedScene" uid="uid://gi5m7r10ckrb" path="res://Assets/PackedScenes/player.tscn" id="2_4vtn3"]
 [ext_resource type="Script" path="res://Assets/Scripts/Utility/CameraController.gd" id="2_a7x6r"]
 [ext_resource type="PackedScene" uid="uid://mhqv0dhfoovh" path="res://Assets/Models/TestHouse.glb" id="3_cbunc"]
@@ -9,24 +8,35 @@
 [ext_resource type="PackedScene" uid="uid://en8siof2j1ei" path="res://Assets/Models/TestSign.glb" id="5_rfkyj"]
 [ext_resource type="PackedScene" uid="uid://ipqlxbyvi27p" path="res://Assets/PackedScenes/npc.tscn" id="7_nfw08"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ql3li"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_apb15"]
 size = Vector3(1.82616, 1.68358, 1.8341)
 
-[sub_resource type="BoxMesh" id="BoxMesh_0bb8y"]
+[sub_resource type="BoxMesh" id="BoxMesh_qu2lo"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_7kg4h"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_62q74"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_mke1h"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_thj27"]
 size = Vector3(0.356405, 0.367621, 0.112553)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_4wl0f"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_w234v"]
 size = Vector3(0.375876, 1, 0.930322)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_n1hq7"]
+size = Vector3(1, 14.3544, 12.722)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_88vax"]
+size = Vector3(1, 14.0517, 14.0772)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ui7o0"]
+size = Vector3(15.7838, 14.2205, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bf20g"]
+size = Vector3(14.6574, 16.5583, 1)
+
 [node name="TownScene" type="Node3D"]
-script = ExtResource("1_fgrup")
 
 [node name="Player" parent="." instance=ExtResource("2_4vtn3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.236, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.236, -0.00156975)
 
 [node name="Environment" type="Node3D" parent="."]
 
@@ -40,19 +50,19 @@ skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/TestHouse/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.281681, 0)
-shape = SubResource("BoxShape3D_ql3li")
+shape = SubResource("BoxShape3D_apb15")
 
 [node name="Door" type="MeshInstance3D" parent="Environment/TestHouse"]
 transform = Transform3D(0.408083, 0, 0, 0, 0.532366, 0, 0, 0, 0.0751534, -0.0398629, -0.288548, 0.910388)
-mesh = SubResource("BoxMesh_0bb8y")
+mesh = SubResource("BoxMesh_qu2lo")
 skeleton = NodePath("../../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Environment/TestHouse/Door" groups=["door"]]
 script = ExtResource("5_b43ou")
-scene_to_load = "ChurchScene"
+scene_to_load = "MarketScene"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/TestHouse/Door/StaticBody3D"]
-shape = SubResource("BoxShape3D_7kg4h")
+shape = SubResource("BoxShape3D_62q74")
 
 [node name="TestHouse2" parent="Environment" instance=ExtResource("3_cbunc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.87915, 0.553104, -1.90225)
@@ -62,7 +72,7 @@ skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/TestHouse2/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.281681, 0)
-shape = SubResource("BoxShape3D_ql3li")
+shape = SubResource("BoxShape3D_apb15")
 
 [node name="TestHouse3" parent="Environment" instance=ExtResource("3_cbunc")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.71511, 0.553104, 1.92293)
@@ -72,7 +82,7 @@ skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/TestHouse3/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.281681, 0)
-shape = SubResource("BoxShape3D_ql3li")
+shape = SubResource("BoxShape3D_apb15")
 
 [node name="TestSign" parent="Environment" instance=ExtResource("5_rfkyj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.93596, -1.19209e-07, -0.544351)
@@ -81,7 +91,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.93596, -1.19209e-07, -0.54
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/TestSign/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00958109, 0.181051, 0)
-shape = SubResource("BoxShape3D_mke1h")
+shape = SubResource("BoxShape3D_thj27")
 
 [node name="TestSign2" parent="Environment" instance=ExtResource("5_rfkyj")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.640486, -1.19209e-07, 4.89791)
@@ -90,7 +100,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.640
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/TestSign2/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00958109, 0.181051, 0)
-shape = SubResource("BoxShape3D_mke1h")
+shape = SubResource("BoxShape3D_thj27")
 
 [node name="TestSign3" parent="Environment" instance=ExtResource("5_rfkyj")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.640486, -1.19209e-07, -4.89404)
@@ -99,7 +109,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.640
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/TestSign3/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00958109, 0.181051, 0)
-shape = SubResource("BoxShape3D_mke1h")
+shape = SubResource("BoxShape3D_thj27")
 
 [node name="Triggers" type="Node3D" parent="."]
 
@@ -108,7 +118,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.00033, 0.496735, 0)
 script = ExtResource("5_b43ou")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Triggers/ToFarm"]
-shape = SubResource("BoxShape3D_4wl0f")
+shape = SubResource("BoxShape3D_w234v")
 
 [node name="ToRiver" type="Area3D" parent="Triggers"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.00550042, 0.496735, 4.9906)
@@ -116,14 +126,14 @@ script = ExtResource("5_b43ou")
 scene_to_load = "RiverScene"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Triggers/ToRiver"]
-shape = SubResource("BoxShape3D_4wl0f")
+shape = SubResource("BoxShape3D_w234v")
 
 [node name="Spawns" type="Node3D" parent="."]
 
 [node name="FromFarm" type="Marker3D" parent="Spawns"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.16, 0.236, 0)
 
-[node name="FromChurch" type="Marker3D" parent="Spawns"]
+[node name="FromMarket" type="Marker3D" parent="Spawns"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.731, 0.236, 0)
 
 [node name="FromRiver" type="Marker3D" parent="Spawns"]
@@ -145,10 +155,28 @@ light_color = Color(0.976471, 0.996078, 1, 1)
 light_energy = 1.561
 shadow_enabled = true
 
+[node name="Invisible Walls" type="StaticBody3D" parent="Utility"]
+
+[node name="LeftBorder" type="CollisionShape3D" parent="Utility/Invisible Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.40845, 0, 0)
+shape = SubResource("BoxShape3D_n1hq7")
+
+[node name="RightBorder" type="CollisionShape3D" parent="Utility/Invisible Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.65229, 0, 0)
+shape = SubResource("BoxShape3D_88vax")
+
+[node name="BackBorder" type="CollisionShape3D" parent="Utility/Invisible Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.5914)
+shape = SubResource("BoxShape3D_ui7o0")
+
+[node name="FrontBorder" type="CollisionShape3D" parent="Utility/Invisible Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.61112)
+shape = SubResource("BoxShape3D_bf20g")
+
 [node name="NPCs" type="Node3D" parent="."]
 
 [node name="Hampton" parent="NPCs" instance=ExtResource("7_nfw08")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.29657, 0.222784, -1.0106)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.54576, 0.222784, -1.0106)
 npc_name = "Hampton"
 
 [connection signal="body_entered" from="Triggers/ToFarm" to="Triggers/ToFarm" method="_on_body_entered"]

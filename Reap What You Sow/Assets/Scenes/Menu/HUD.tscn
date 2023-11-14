@@ -1,7 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbm8gu12qqwku"]
+[gd_scene load_steps=10 format=3 uid="uid://bbm8gu12qqwku"]
 
 [ext_resource type="Shader" path="res://Assets/Shaders/blur.gdshader" id="1_d3srs"]
 [ext_resource type="Script" path="res://Assets/Scripts/Utility/Menu/HUDController.gd" id="2_njykt"]
+[ext_resource type="Texture2D" uid="uid://cm7mysfg6n1gb" path="res://Assets/Sprites/Utility/Buttons/spr_key_f3.png" id="3_4arxc"]
+[ext_resource type="Texture2D" uid="uid://c706nfqhvojh2" path="res://Assets/Sprites/Utility/Buttons/spr_key_q.png" id="3_4g3gq"]
+[ext_resource type="Texture2D" uid="uid://b8mxh6esg6pmq" path="res://Assets/Sprites/Utility/Buttons/spr_key_space.png" id="4_qmiq2"]
+[ext_resource type="Texture2D" uid="uid://bchplu3m0a54w" path="res://Assets/Sprites/Utility/User Interface/spr_hotbar.png" id="6_cc606"]
+[ext_resource type="Texture2D" uid="uid://clmx7v7ofh1bc" path="res://Assets/Sprites/Utility/User Interface/spr_selection.png" id="7_jjuas"]
+[ext_resource type="Texture2D" uid="uid://dokq6i12wmi0b" path="res://Assets/Sprites/Items/spr_fishing_rod.png" id="8_jg0rg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ob0xb"]
 shader = ExtResource("1_d3srs")
@@ -14,6 +20,8 @@ material = SubResource("ShaderMaterial_ob0xb")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(1, 1, 1, 0)
 script = ExtResource("2_njykt")
 metadata/_edit_use_anchors_ = true
@@ -68,25 +76,223 @@ text = "FPS"
 
 [node name="Cur_Item" type="Label" parent="."]
 layout_mode = 0
-offset_left = 28.0
-offset_top = 569.84
-offset_right = 76.0
-offset_bottom = 595.84
-text = "Item:"
+offset_left = 255.0
+offset_top = 541.0
+offset_right = 897.0
+offset_bottom = 567.0
+text = "Item"
+horizontal_alignment = 1
 
-[node name="Cur_Crop" type="Label" parent="."]
-layout_mode = 0
-offset_left = 28.0
-offset_top = 600.0
-offset_right = 76.0
-offset_bottom = 626.0
-text = "Crop: "
+[node name="FarmUI" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="InventoryContainer" type="VBoxContainer" parent="."]
+[node name="SeedsContainer" type="VBoxContainer" parent="FarmUI"]
 layout_direction = 3
 layout_mode = 0
-offset_left = -3.0
+offset_left = -1115.0
 offset_top = -1.0
-offset_right = 37.0
+offset_right = -1075.0
 offset_bottom = 39.0
 alignment = 2
+
+[node name="Cur_Crop" type="Label" parent="FarmUI"]
+layout_mode = 0
+offset_left = 897.0
+offset_top = 577.0
+offset_right = 1151.0
+offset_bottom = 642.0
+text = "No Seeds Selected"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FarmInstructions" type="Control" parent="FarmUI"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 61.0
+offset_top = 362.0
+offset_right = 101.0
+offset_bottom = 402.0
+
+[node name="ClickSeeds" type="Label" parent="FarmUI/FarmInstructions"]
+layout_mode = 0
+offset_left = 731.0
+offset_top = -361.0
+offset_right = 901.0
+offset_bottom = -296.0
+text = "You can also click on 
+your seeds here!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="F3Sprite" type="Sprite2D" parent="FarmUI/FarmInstructions"]
+position = Vector2(0, 11.6249)
+scale = Vector2(2.82813, 2.82813)
+texture = ExtResource("3_4arxc")
+
+[node name="MenuInstruct" type="Label" parent="FarmUI/FarmInstructions"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = -2.37512
+offset_right = 263.0
+offset_bottom = 23.6249
+text = "to show/hide this menu"
+
+[node name="QSprite" type="Sprite2D" parent="FarmUI/FarmInstructions"]
+position = Vector2(0, 71.6249)
+scale = Vector2(2.82813, 2.82813)
+texture = ExtResource("3_4g3gq")
+
+[node name="CropInstruct" type="Label" parent="FarmUI/FarmInstructions"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 55.6249
+offset_right = 258.0
+offset_bottom = 81.6249
+text = "to cycle between seeds"
+
+[node name="SpacebarSprite" type="Sprite2D" parent="FarmUI/FarmInstructions"]
+position = Vector2(2, 130.625)
+scale = Vector2(3.62903, 2.25)
+texture = ExtResource("4_qmiq2")
+
+[node name="PlotInstruct1" type="Label" parent="FarmUI/FarmInstructions"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 115.755
+offset_right = 368.0
+offset_bottom = 141.755
+text = "to begin planting (with hoe & seed selected)"
+
+[node name="SpacebarSprite2" type="Sprite2D" parent="FarmUI/FarmInstructions"]
+position = Vector2(1.99999, 184.625)
+scale = Vector2(3.62903, 2.25)
+texture = ExtResource("4_qmiq2")
+
+[node name="PlotInstruct2" type="Label" parent="FarmUI/FarmInstructions"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 169.625
+offset_right = 368.0
+offset_bottom = 195.625
+text = "again to finalize plot creation"
+
+[node name="Hotbar" type="Sprite2D" parent="."]
+position = Vector2(576, 608)
+scale = Vector2(2, 2)
+texture = ExtResource("6_cc606")
+
+[node name="Select" type="Sprite2D" parent="Hotbar"]
+position = Vector2(-143, 0)
+texture = ExtResource("7_jjuas")
+
+[node name="Slot1" type="Sprite2D" parent="Hotbar"]
+position = Vector2(-144, 0)
+texture = ExtResource("8_jg0rg")
+
+[node name="Slot1Label" type="Label" parent="Hotbar"]
+offset_left = -139.0
+offset_top = -19.0
+offset_right = -129.0
+offset_bottom = 7.0
+text = "0"
+
+[node name="Slot2" type="Sprite2D" parent="Hotbar"]
+position = Vector2(-112, 0)
+texture = ExtResource("8_jg0rg")
+
+[node name="Slot2Label" type="Label" parent="Hotbar"]
+offset_left = -107.0
+offset_top = -18.5
+offset_right = -97.0
+offset_bottom = 7.5
+text = "0"
+
+[node name="Slot3" type="Sprite2D" parent="Hotbar"]
+position = Vector2(-80, 0)
+texture = ExtResource("8_jg0rg")
+
+[node name="Slot3Label" type="Label" parent="Hotbar"]
+offset_left = -75.0
+offset_top = -18.5
+offset_right = -65.0
+offset_bottom = 7.5
+text = "0"
+
+[node name="Slot4" type="Sprite2D" parent="Hotbar"]
+position = Vector2(-48, 0)
+texture = ExtResource("8_jg0rg")
+
+[node name="Slot4Label" type="Label" parent="Hotbar"]
+offset_left = -42.5
+offset_top = -18.5
+offset_right = -32.5
+offset_bottom = 7.5
+text = "0"
+
+[node name="Slot5" type="Sprite2D" parent="Hotbar"]
+position = Vector2(-16, 0.333328)
+texture = ExtResource("8_jg0rg")
+
+[node name="Slot5Label" type="Label" parent="Hotbar"]
+offset_left = -11.0
+offset_top = -19.0
+offset_right = -1.0
+offset_bottom = 7.0
+text = "0"
+
+[node name="Slot6" type="Sprite2D" parent="Hotbar"]
+position = Vector2(16, 0)
+texture = ExtResource("8_jg0rg")
+
+[node name="Slot6Label" type="Label" parent="Hotbar"]
+offset_left = 20.5
+offset_top = -19.0
+offset_right = 30.5
+offset_bottom = 7.0
+text = "0"
+
+[node name="Slot7" type="Sprite2D" parent="Hotbar"]
+position = Vector2(47.6667, 0)
+texture = ExtResource("8_jg0rg")
+
+[node name="Slot7Label" type="Label" parent="Hotbar"]
+offset_left = 52.5
+offset_top = -19.0
+offset_right = 62.5
+offset_bottom = 7.0
+text = "0"
+
+[node name="Slot8" type="Sprite2D" parent="Hotbar"]
+position = Vector2(80, 0)
+texture = ExtResource("8_jg0rg")
+
+[node name="Slot8Label" type="Label" parent="Hotbar"]
+offset_left = 84.5
+offset_top = -19.0
+offset_right = 94.5
+offset_bottom = 7.0
+text = "0"
+
+[node name="Slot9" type="Sprite2D" parent="Hotbar"]
+position = Vector2(112, 0)
+texture = ExtResource("8_jg0rg")
+
+[node name="Slot9Label" type="Label" parent="Hotbar"]
+offset_left = 116.5
+offset_top = -19.0
+offset_right = 126.5
+offset_bottom = 7.0
+text = "0"
+
+[node name="Slot10" type="Sprite2D" parent="Hotbar"]
+position = Vector2(144, 0)
+texture = ExtResource("8_jg0rg")
+
+[node name="Slot10Label" type="Label" parent="Hotbar"]
+offset_left = 148.5
+offset_top = -19.0
+offset_right = 158.5
+offset_bottom = 7.0
+text = "0"

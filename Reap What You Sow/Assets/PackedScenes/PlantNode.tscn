@@ -6,20 +6,16 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_sd20m"]
 size = Vector3(2.02444, 1.9781, 2.0024)
 
-[node name="PlantNode" type="Node3D" groups=["Planter"]]
+[node name="PlantNode" type="CharacterBody3D" groups=["Planter"]]
 transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+script = ExtResource("4_bn3rb")
 
-[node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="PlantCollide" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 12.1331, 0)
 shape = SubResource("BoxShape3D_sd20m")
 
-[node name="Sprite3D" type="Sprite3D" parent="Area3D"]
-transform = Transform3D(500, 0, 0, 0, 500, 0, 0, 0, 500, 0, 80.1244, 0)
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 0, 4.00622, 0)
 billboard = 1
 texture_filter = 0
 texture = ExtResource("3_ovn8s")
-script = ExtResource("4_bn3rb")
-
-[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]

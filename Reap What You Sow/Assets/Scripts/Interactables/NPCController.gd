@@ -4,7 +4,6 @@ extends CharacterBody3D
 var reputation = 100
 
 @onready var dialogue_menu = $DialogueMenu
-@onready var animator: AnimationPlayer = $DialogueMenu/AnimationPlayer
 
 var charpath = "res://Assets/Sprites/Characters/"
 var dialoguepath = null
@@ -80,6 +79,7 @@ func _ready():
 			reputation = GameController.reputation[20]
 			
 	$Sprite3D.texture = sprite
+	
 func talk():
 	if (dialogue_menu.has_method("start_dialogue")):
 		dialogue_menu.start_dialogue(npc_name, reputation, dialoguepath)

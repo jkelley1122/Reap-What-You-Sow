@@ -7,14 +7,25 @@ extends Node3D
 var croptype
 var plot_points: Array = []
 var plants: Array = []
+var seeds_pouch
+
+@onready var current_scene = get_tree().current_scene
+@onready var player = get_tree().current_scene.get_node("Player")
+@onready var HUD = get_tree().current_scene.get_node("Player").get_node("HUD")
 
 func _ready():
 	croptype = 0
-	plants = ['Corn', 'Carrot', 'Blackberry', 'Raspberry', 'Tobacco', 'Broccoli', 'Wheat', 'Tomato', 'Cauliflower']
+	plants = ['Corn Seeds', 'Carrot Seeds', 'Blackberry Seeds', 'Raspberry Seeds', 'Tobacco Seeds', 'Broccoli Seeds', 'Wheat Seeds', 'Tomato Seeds', 'Cauliflower Seeds']
 	
+	seeds_pouch = current_scene.get_node("Player").get_node("SeedsPouch")
+	
+	# If the player is on the farm, load their existing planted crops
+	if current_scene.name == "FarmScene":
+		load_crops()
+			
 func _process(delta):
 	# Detect user input (godot uses keybinds)
-	if Input.is_action_just_released("ui_select"):
+	if Input.is_action_just_released("ui_select") && current_scene.scene_file_path == "res://Assets/Scenes/FarmScene.tscn" && player.cur_item == "Hoe":
 		# Adds the current position to the plot_points list.
 		# global_transform.origin is similar to transform.position in Unity.
 		plot_points.append(global_transform.origin)
@@ -60,7 +71,8 @@ func does_overlap(point1: Vector3) -> bool:
 		return true
 		
 	else:
-		return false	
+		return false
+		
 func define_plot_space():
 	# Extract the start and end points for x and z.
 	var x_start = plot_points[0].x
@@ -79,9 +91,37 @@ func define_plot_space():
 		while (z_step > 0 and z <= z_end) or (z_step < 0 and z >= z_end):
 			# Instantiate a new plant node.
 			# This is equivalent to Unity's Instantiate function.
-			var new_plant = plant_node.instantiate()
-			get_tree().current_scene.add_child(new_plant)
-			new_plant.global_transform.origin = Vector3(x, 0.05, z)
-			new_plant.find_child('Sprite3D').crop = croptype ############### New WIP shit #####################
+			if seeds_pouch.has_seed(plants[croptype], 1):
+				var new_plant = plant_node.instantiate()
+				
+				get_tree().current_scene.add_child(new_plant)
+				new_plant.global_transform.origin = Vector3(x, 0.05, z)
+				new_plant.crop = croptype ############### New WIP shit #####################
+				new_plant.time_planted = [GameController.time[0], GameController.time[1], GameController.time[2], GameController.time[3], GameController.time[4]]
+				seeds_pouch.remove_seed(plants[croptype], 1)
+				
+				# Saves the crop so it is retained between scenes
+				GameController.add_crop(new_plant.crop, new_plant.global_transform.origin, new_plant.time_planted)
+			else:
+				print("Not enough Seeds")
+				break
 			z += z_step
 		x += x_step
+
+###SCENE CHANGE FUNCTIONS###
+# Loads crops from the list of crops kept in the game controller
+func load_crops():
+	for crop in GameController.crop_list:
+		var time_planted = crop["time_planted"]
+		var new_plant = plant_node.instantiate()
+		
+		# If this happens in the first frames, things go wrong, so we defer the call
+		current_scene.call_deferred("add_child", new_plant)
+		call_deferred("on_new_plant_added", new_plant, crop, time_planted)
+
+# Continues work from load_crops(), is used to set up plant nodes with essential data. 
+func on_new_plant_added(new_plant, crop, time_planted):
+	new_plant.crop = crop["type"]
+	new_plant.time_planted = time_planted
+	new_plant.global_transform.origin = Vector3(crop["position"][0], crop["position"][1], crop["position"][2])
+

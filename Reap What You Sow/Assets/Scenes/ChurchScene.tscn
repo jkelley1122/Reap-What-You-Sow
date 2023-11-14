@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bje6fpiku3atu"]
+[gd_scene load_steps=12 format=3 uid="uid://bje6fpiku3atu"]
 
 [ext_resource type="PackedScene" uid="uid://gi5m7r10ckrb" path="res://Assets/PackedScenes/player.tscn" id="1_dx2gp"]
 [ext_resource type="PackedScene" uid="uid://3457a5so8lew" path="res://Assets/Models/TestChurch.glb" id="3_3itmb"]
@@ -10,11 +10,22 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7kg4h"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_8xkwb"]
+size = Vector3(1, 14.3544, 12.722)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jamk5"]
+size = Vector3(1, 14.0517, 14.0772)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f65nt"]
+size = Vector3(15.7838, 14.2205, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iumtn"]
+size = Vector3(14.6574, 16.5583, 1)
+
 [node name="ChurchScene" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_dx2gp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.236, 0)
-interaction_range = 0.5
 
 [node name="Environment" type="Node3D" parent="."]
 
@@ -43,6 +54,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.236, 4.16)
 [node name="Camera3D" type="Camera3D" parent="Utility" node_paths=PackedStringArray("player")]
 transform = Transform3D(0.707107, -0.353553, 0.612373, 0, 0.866026, 0.5, -0.707107, -0.353553, 0.612373, 5.333, 4.715, 5.424)
 projection = 1
+current = true
 size = 3.0
 script = ExtResource("7_xxw5x")
 player = NodePath("../../Player")
@@ -54,7 +66,26 @@ light_color = Color(0.976471, 0.996078, 1, 1)
 light_energy = 1.561
 shadow_enabled = true
 
+[node name="Invisible Walls" type="StaticBody3D" parent="Utility"]
+
+[node name="LeftBorder" type="CollisionShape3D" parent="Utility/Invisible Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.40845, 0, 0)
+shape = SubResource("BoxShape3D_8xkwb")
+
+[node name="RightBorder" type="CollisionShape3D" parent="Utility/Invisible Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.65229, 0, 0)
+shape = SubResource("BoxShape3D_jamk5")
+
+[node name="BackBorder" type="CollisionShape3D" parent="Utility/Invisible Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.5914)
+shape = SubResource("BoxShape3D_f65nt")
+
+[node name="FrontBorder" type="CollisionShape3D" parent="Utility/Invisible Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.61112)
+shape = SubResource("BoxShape3D_iumtn")
+
 [node name="NPCs" type="Node3D" parent="."]
 
-[node name="Rana" parent="NPCs" instance=ExtResource("8_fo30i")]
+[node name="Edith" parent="NPCs" instance=ExtResource("8_fo30i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03408, 0.222784, 0.956202)
+npc_name = "Edith"
