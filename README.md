@@ -10,4 +10,4 @@ John Kelley (Github Manager)
 
 Hailey Guerkink
 
-Brendan Biggs
+Brendan Biggs (Programming and Scripting for Farming System)
